@@ -189,8 +189,9 @@ tr:hover td{background:#F8FAFF}
 .mobile-topbar{display:none;background:var(--sb);padding:14px 20px;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .mobile-topbar .mbrand{font-size:1rem;font-weight:700;color:#fff;letter-spacing:1.5px}
 .mobile-topbar .mbrand span{color:var(--red)}
+.mdate{font-size:.7rem;color:rgba(255,255,255,.55);margin-top:2px;display:block}
 .mob-toggle{background:none;border:none;cursor:pointer;display:flex;flex-direction:column;gap:4.5px}
-.mob-toggle span{display:block;width:22px;height:2px;background:var(--red);border-radius:2px;transition:all .3s}
+.mob-toggle span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
 .mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:150}
 .mob-overlay.open{display:block}
 
@@ -210,6 +211,7 @@ tr:hover td{background:#F8FAFF}
   .pkg-grid{grid-template-columns:1fr}
 }
 </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -239,7 +241,10 @@ tr:hover td{background:#F8FAFF}
 <div id="app">
   <!-- Mobile top bar -->
   <div class="mobile-topbar">
-    <div class="mbrand">AIR<span>SKYLINK</span></div>
+    <div>
+      <div class="mbrand">AIR<span>SKYLINK</span></div>
+      <span class="mdate" id="mdate"></span>
+    </div>
     <button class="mob-toggle" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
   </div>
   <div class="mob-overlay" id="mob-overlay" onclick="toggleSidebar()"></div>
@@ -483,6 +488,7 @@ auth.onAuthStateChanged(user => {
     document.getElementById('sb-email').textContent = user.email;
     document.getElementById('sb-av').textContent = user.email[0].toUpperCase();
     document.getElementById('tdate').textContent = new Date().toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+    document.getElementById('mdate').textContent = new Date().toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
     initApp();
   } else {
     document.getElementById('login-screen').style.display = 'flex';
