@@ -189,64 +189,26 @@ tr:hover td{background:#F8FAFF}
 .mobile-topbar{display:none;background:var(--sb);padding:14px 20px;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .mobile-topbar .mbrand{font-size:1rem;font-weight:700;color:#fff;letter-spacing:1.5px}
 .mobile-topbar .mbrand span{color:var(--red)}
-.mob-toggle{background:none;border:none;cursor:pointer;display:flex;flex-direction:column;gap:4.5px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.mdate{font-size:.7rem;color:rgba(255,255,255,.55);margin-top:2px;display:block}
+.mob-toggle{background:none;border:none;cursor:pointer;display:flex;flex-direction:column;gap:4.5px}
 .mob-toggle span{display:block;width:22px;height:2px;background:var(--red);border-radius:2px;transition:all .3s}
-.mob-toggle:active{opacity:.7}
 .mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:150}
 .mob-overlay.open{display:block}
 
 @media(max-width:768px){
-  html,body{overflow-x:hidden}
-  #app{height:auto;min-height:100vh;overflow-x:hidden}
-  .app-wrap{grid-template-columns:1fr;height:auto;min-height:100vh}
-  #main{overflow-x:hidden;width:100vw}
-  #sidebar{position:fixed;left:-260px;top:0;bottom:0;z-index:1000;transition:left .3s var(--ease);width:260px;height:100%;max-height:100vh;box-shadow:4px 0 24px rgba(0,0,0,.4)}
+  .app-wrap{grid-template-columns:1fr}
+  #sidebar{position:fixed;left:-240px;z-index:200;transition:left .3s var(--ease);width:240px}
   #sidebar.open{left:0}
-  .mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999}
-  .mob-overlay.open{display:block}
-  .mobile-topbar{display:flex;width:100vw;box-sizing:border-box;position:sticky;top:0;z-index:50;align-items:center;gap:8px}
-.mdate{font-size:.7rem;color:rgba(255,255,255,.7);margin-left:auto;white-space:nowrap}
+  .mobile-topbar{display:flex}
   .top-bar{display:none}
-  .page-content{padding:16px;width:100%;overflow-x:hidden}
-  .stats-row{grid-template-columns:repeat(2,1fr);gap:12px}
-  .stat-card{padding:16px 14px}
-  .stat-val{font-size:1.6rem}
-  .stat-lbl{font-size:.65rem}
-  .stat-sub{font-size:.7rem}
-  .sec-card{width:100%;overflow:hidden}
-  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%}
-  table{min-width:600px}
-  th{padding:10px 12px;font-size:.65rem;white-space:nowrap}
-  td{padding:10px 12px;font-size:.8rem;white-space:nowrap}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
   .inq-grid{grid-template-columns:1fr}
   .fg-row{grid-template-columns:1fr}
-  .sec-head{padding:14px 16px}
-  .sec-head h2{font-size:.9rem}
-  .filter-tabs{padding:12px 16px}
-  .f-tab{padding:5px 12px;font-size:.75rem}
-  .modal-box{margin:10px;max-height:85vh}
-  .modal-body{padding:16px}
-  .modal-foot{padding:12px 16px}
-  .empty-state{padding:40px 16px}
-  .pkg-grid{padding:16px;grid-template-columns:1fr}
+  .page-content{padding:16px}
 }
 @media(max-width:480px){
-  .stats-row{grid-template-columns:1fr 1fr;gap:10px}
-  .stat-card{padding:14px 12px}
-  .stat-val{font-size:1.4rem}
-  .stat-lbl{font-size:.6rem;letter-spacing:.5px}
-  .tbl-actions{gap:4px}
-  .act-btn{padding:4px 8px;font-size:.7rem}
-  .page-content{padding:12px}
-  .modal-box{margin:8px}
-  #sidebar{width:280px;left:-280px}
-  .sb-link{padding:14px 16px;font-size:1rem}
-  .sb-section{padding:0 16px;margin:20px 0 8px;font-size:.7rem}
-  .sb-logo{padding:28px 24px 24px}
-  .sb-nav{padding:20px 16px}
-  .sb-footer{padding:20px 16px}
-  .sb-user{padding:14px 16px}
-  .sb-logout{padding:12px 16px}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .pkg-grid{grid-template-columns:1fr}
 }
 </style>
 <base target="_blank">
@@ -279,9 +241,11 @@ tr:hover td{background:#F8FAFF}
 <div id="app">
   <!-- Mobile top bar -->
   <div class="mobile-topbar">
-    <div class="mbrand">AIR<span>SKYLINK</span></div>
-    <span class="mdate" id="mdate"></span>
-    <button class="mob-toggle" onclick="toggleSidebar()" aria-label="Open menu" style="padding:8px;margin:-8px"><span></span><span></span><span></span></button>
+    <div>
+      <div class="mbrand">AIR<span>SKYLINK</span></div>
+      <span class="mdate" id="mdate"></span>
+    </div>
+    <button class="mob-toggle" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
   </div>
   <div class="mob-overlay" id="mob-overlay" onclick="toggleSidebar()"></div>
 
@@ -524,8 +488,7 @@ auth.onAuthStateChanged(user => {
     document.getElementById('sb-email').textContent = user.email;
     document.getElementById('sb-av').textContent = user.email[0].toUpperCase();
     document.getElementById('tdate').textContent = new Date().toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-    const mdate = document.getElementById('mdate');
-    if(mdate) mdate.textContent = new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+    document.getElementById('mdate').textContent = new Date().toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
     initApp();
   } else {
     document.getElementById('login-screen').style.display = 'flex';
@@ -575,23 +538,12 @@ function showView(id, btn) {
 function toggleSidebar() {
   const sb = document.getElementById('sidebar');
   const ov = document.getElementById('mob-overlay');
-  const isOpen = sb.classList.contains('open');
-  if (isOpen) {
-    sb.classList.remove('open');
-    ov.classList.remove('open');
-    document.body.style.overflow = '';
-  } else {
-    sb.classList.add('open');
-    ov.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    // Ensure sidebar is visible above everything
-    sb.style.display = 'flex';
-  }
+  sb.classList.toggle('open');
+  ov.classList.toggle('open');
 }
 function closeSidebar() {
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('mob-overlay').classList.remove('open');
-  document.body.style.overflow = '';
 }
 
 // ── TOAST ─────────────────────────────────
