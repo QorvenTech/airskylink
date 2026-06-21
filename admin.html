@@ -34,29 +34,29 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:#F1F5F9;color:#1
 
 /* ── APP SHELL ──────────────────────────── */
 #app{display:none;height:100vh;overflow:hidden}
-.app-wrap{display:grid;grid-template-columns:240px 1fr;height:100vh}
+.app-wrap{display:grid;grid-template-columns:260px 1fr;height:100vh}
 
 /* ── SIDEBAR ────────────────────────────── */
 #sidebar{background:var(--sb);display:flex;flex-direction:column;height:100vh;overflow-y:auto;overflow-x:hidden}
-.sb-logo{padding:24px 20px 20px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sb-logo{padding:28px 24px 24px;border-bottom:1px solid rgba(255,255,255,.08)}
 .sb-logo .brand{font-size:1.1rem;font-weight:700;letter-spacing:1.5px;color:#fff;line-height:1}
 .sb-logo .brand span{color:var(--red)}
 .sb-logo .sub{font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px}
-.sb-nav{padding:16px 12px;flex:1}
-.sb-section{font-size:.65rem;color:rgba(255,255,255,.3);letter-spacing:2px;text-transform:uppercase;padding:0 8px;margin:16px 0 6px}
-.sb-link{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:8px;color:rgba(255,255,255,.65);font-size:.875rem;font-weight:500;cursor:pointer;transition:all .25s;margin-bottom:2px;border:none;background:none;width:100%;text-align:left}
+.sb-nav{padding:20px 16px;flex:1}
+.sb-section{font-size:.72rem;color:rgba(255,255,255,.3);letter-spacing:2px;text-transform:uppercase;padding:0 12px;margin:24px 0 10px}
+.sb-link{display:flex;align-items:center;gap:16px;padding:14px 16px;border-radius:10px;color:rgba(255,255,255,.65);font-size:1.05rem;font-weight:500;cursor:pointer;transition:all .25s;margin-bottom:4px;border:none;background:none;width:100%;text-align:left}
 .sb-link:hover{background:var(--sbh);color:#fff}
 .sb-link.active{background:var(--red);color:#fff}
-.sb-link .ico{width:18px;text-align:center;font-size:1rem;flex-shrink:0}
+.sb-link .ico{width:26px;text-align:center;font-size:1.4rem;flex-shrink:0}
 .sb-badge{margin-left:auto;background:var(--red);color:#fff;font-size:.65rem;font-weight:700;padding:2px 7px;border-radius:50px;min-width:20px;text-align:center}
 .sb-link.active .sb-badge{background:rgba(255,255,255,.3)}
-.sb-footer{padding:16px 12px;border-top:1px solid rgba(255,255,255,.08)}
-.sb-user{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;background:rgba(255,255,255,.05);margin-bottom:8px}
-.sb-user-av{width:32px;height:32px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff;flex-shrink:0}
+.sb-footer{padding:20px 16px;border-top:1px solid rgba(255,255,255,.08)}
+.sb-user{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);margin-bottom:10px}
+.sb-user-av{width:38px;height:38px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:700;color:#fff;flex-shrink:0}
 .sb-user-info{min-width:0}
-.sb-user-name{font-size:.82rem;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sb-user-role{font-size:.7rem;color:rgba(255,255,255,.4)}
-.sb-logout{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:rgba(255,255,255,.5);font-size:.85rem;cursor:pointer;transition:all .25s;border:none;background:none;width:100%}
+.sb-user-name{font-size:.95rem;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-user-role{font-size:.8rem;color:rgba(255,255,255,.4)}
+.sb-logout{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;color:rgba(255,255,255,.5);font-size:.95rem;cursor:pointer;transition:all .25s;border:none;background:none;width:100%}
 .sb-logout:hover{background:rgba(212,43,58,.15);color:var(--red)}
 
 /* ── MAIN ───────────────────────────────── */
@@ -190,14 +190,14 @@ tr:hover td{background:#F8FAFF}
 .mobile-topbar .mbrand{font-size:1rem;font-weight:700;color:#fff;letter-spacing:1.5px}
 .mobile-topbar .mbrand span{color:var(--red)}
 .mdate{font-size:.7rem;color:rgba(255,255,255,.55);margin-top:2px;display:block}
-.mob-toggle{background:none;border:none;cursor:pointer;display:flex;flex-direction:column;gap:4.5px}
-.mob-toggle span{display:block;width:22px;height:2px;background:var(--red);border-radius:2px;transition:all .3s}
+.mob-toggle{background:none;border:none;cursor:pointer;display:flex;flex-direction:column;gap:3.5px;padding:4px}
+.mob-toggle span{display:block;width:24px;height:2.5px;background:var(--red);border-radius:2px;transition:all .3s}
 .mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:150}
 .mob-overlay.open{display:block}
 
 @media(max-width:768px){
   .app-wrap{grid-template-columns:1fr}
-  #sidebar{position:fixed;left:-240px;z-index:200;transition:left .3s var(--ease);width:240px}
+  #sidebar{position:fixed;left:-260px;z-index:200;transition:left .3s var(--ease);width:260px}
   #sidebar.open{left:0}
   .mobile-topbar{display:flex}
   .top-bar{display:none}
@@ -245,7 +245,7 @@ tr:hover td{background:#F8FAFF}
       <div class="mbrand">AIR<span>SKYLINK</span></div>
       <span class="mdate" id="mdate"></span>
     </div>
-    <button class="mob-toggle" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
+    <button class="mob-toggle" onclick="toggleSidebar()"><span></span><span></span><span></span><span></span></button>
   </div>
   <div class="mob-overlay" id="mob-overlay" onclick="toggleSidebar()"></div>
 
