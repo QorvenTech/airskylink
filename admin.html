@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel – Air Skylink Travels</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:'Inter',sans-serif;background:#F1F5F9;color:#1E2A3A}
+:root{
+  --sb:#0D1B3E;--sbh:#162548;--red:#D42B3A;--red-lt:#E84556;
+  --bg:#F1F5F9;--white:#fff;--text:#1E2A3A;--gray:#6B7280;
+  --lgray:#E5E7EB;--success:#10B981;--warn:#F59E0B;--info:#3B82F6;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+
+/* ── LOGIN ──────────────────────────────── */
+#login-screen{min-height:100vh;background:linear-gradient(135deg,#070F24 0%,#0D1B3E 60%,#1a0a0e 100%);display:flex;align-items:center;justify-content:center;padding:24px}
+.login-box{background:#fff;border-radius:16px;padding:44px 40px;width:100%;max-width:400px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.login-logo{text-align:center;margin-bottom:32px}
+.login-logo .lbrand{font-size:1.4rem;font-weight:700;letter-spacing:2px;color:var(--text)}
+.login-logo .lbrand span{color:var(--red)}
+.login-logo p{font-size:.78rem;color:var(--gray);margin-top:4px;letter-spacing:1px;text-transform:uppercase}
+.login-box h2{font-size:1.3rem;font-weight:600;margin-bottom:6px;color:var(--text)}
+.login-box p.sub{font-size:.85rem;color:var(--gray);margin-bottom:28px}
+.lf-group{margin-bottom:18px}
+.lf-group label{display:block;font-size:.75rem;font-weight:600;color:var(--gray);letter-spacing:.8px;text-transform:uppercase;margin-bottom:7px}
+.lf-group input{width:100%;padding:11px 14px;border:1.5px solid var(--lgray);border-radius:8px;font-size:.9rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .3s;color:var(--text)}
+.lf-group input:focus{border-color:var(--red)}
+.login-btn{width:100%;padding:13px;background:var(--red);color:#fff;border:none;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;transition:background .3s,transform .2s;margin-top:8px}
+.login-btn:hover{background:var(--red-lt);transform:translateY(-1px)}
+.login-err{font-size:.82rem;color:var(--red);margin-top:10px;text-align:center;min-height:18px}
+
+/* ── APP SHELL ──────────────────────────── */
+#app{display:none;height:100vh;overflow:hidden}
+.app-wrap{display:grid;grid-template-columns:240px 1fr;height:100vh}
+
+/* ── SIDEBAR ────────────────────────────── */
+#sidebar{background:var(--sb);display:flex;flex-direction:column;height:100vh;overflow-y:auto;overflow-x:hidden}
+.sb-logo{padding:24px 20px 20px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sb-logo .brand{font-size:1.1rem;font-weight:700;letter-spacing:1.5px;color:#fff;line-height:1}
+.sb-logo .brand span{color:var(--red)}
+.sb-logo .sub{font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px}
+.sb-nav{padding:16px 12px;flex:1}
+.sb-section{font-size:.65rem;color:rgba(255,255,255,.3);letter-spacing:2px;text-transform:uppercase;padding:0 8px;margin:16px 0 6px}
+.sb-link{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:8px;color:rgba(255,255,255,.65);font-size:.875rem;font-weight:500;cursor:pointer;transition:all .25s;margin-bottom:2px;border:none;background:none;width:100%;text-align:left}
+.sb-link:hover{background:var(--sbh);color:#fff}
+.sb-link.active{background:var(--red);color:#fff}
+.sb-link .ico{width:18px;text-align:center;font-size:1rem;flex-shrink:0}
+.sb-badge{margin-left:auto;background:var(--red);color:#fff;font-size:.65rem;font-weight:700;padding:2px 7px;border-radius:50px;min-width:20px;text-align:center}
+.sb-link.active .sb-badge{background:rgba(255,255,255,.3)}
+.sb-footer{padding:16px 12px;border-top:1px solid rgba(255,255,255,.08)}
+.sb-user{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;background:rgba(255,255,255,.05);margin-bottom:8px}
+.sb-user-av{width:32px;height:32px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff;flex-shrink:0}
+.sb-user-info{min-width:0}
+.sb-user-name{font-size:.82rem;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-user-role{font-size:.7rem;color:rgba(255,255,255,.4)}
+.sb-logout{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:rgba(255,255,255,.5);font-size:.85rem;cursor:pointer;transition:all .25s;border:none;background:none;width:100%}
+.sb-logout:hover{background:rgba(212,43,58,.15);color:var(--red)}
+
+/* ── MAIN ───────────────────────────────── */
+#main{overflow-y:auto;background:var(--bg);display:flex;flex-direction:column}
+.top-bar{background:#fff;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--lgray);flex-shrink:0}
+.top-bar h1{font-size:1.1rem;font-weight:600;color:var(--text)}
+.top-bar .tdate{font-size:.8rem;color:var(--gray)}
+.page-content{padding:28px;flex:1}
+
+/* Views */
+.view{display:none}
+.view.active{display:block}
+
+/* ── STAT CARDS ─────────────────────────── */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:28px}
+.stat-card{background:#fff;border-radius:12px;padding:22px 20px;box-shadow:0 1px 4px rgba(0,0,0,.06);border-left:4px solid var(--lgray)}
+.stat-card.c-red{border-left-color:var(--red)}
+.stat-card.c-green{border-left-color:var(--success)}
+.stat-card.c-blue{border-left-color:var(--info)}
+.stat-card.c-warn{border-left-color:var(--warn)}
+.stat-lbl{font-size:.72rem;color:var(--gray);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.stat-val{font-size:2rem;font-weight:700;color:var(--text);line-height:1}
+.stat-sub{font-size:.75rem;color:var(--gray);margin-top:5px}
+
+/* ── SECTION CARD ───────────────────────── */
+.sec-card{background:#fff;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.06);overflow:hidden;margin-bottom:24px}
+.sec-head{padding:18px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--lgray)}
+.sec-head h2{font-size:.95rem;font-weight:600;color:var(--text)}
+.sec-head .sec-meta{font-size:.78rem;color:var(--gray)}
+
+/* ── BADGES ─────────────────────────────── */
+.badge{display:inline-block;padding:3px 10px;border-radius:50px;font-size:.7rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+.badge-new{background:#FEF3C7;color:#92400E}
+.badge-read{background:#DBEAFE;color:#1E40AF}
+.badge-resolved{background:#D1FAE5;color:#065F46}
+
+/* ── TABLE ──────────────────────────────── */
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th{padding:11px 16px;text-align:left;font-size:.72rem;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:.8px;background:#F8FAFC;border-bottom:1px solid var(--lgray)}
+td{padding:13px 16px;font-size:.85rem;color:var(--text);border-bottom:1px solid #F1F5F9;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#F8FAFF}
+.tbl-name{font-weight:600}
+.tbl-phone{color:var(--gray)}
+.tbl-actions{display:flex;gap:8px;flex-wrap:wrap}
+.act-btn{padding:5px 12px;border-radius:6px;font-size:.75rem;font-weight:600;cursor:pointer;border:none;transition:all .2s}
+.act-view{background:#EEF2FF;color:#3730A3}
+.act-view:hover{background:#C7D2FE}
+.act-read{background:#D1FAE5;color:#065F46}
+.act-read:hover{background:#A7F3D0}
+.act-done{background:#FEE2E2;color:#991B1B}
+.act-done:hover{background:#FECACA}
+.act-del{background:#F1F5F9;color:var(--gray)}
+.act-del:hover{background:#FEE2E2;color:#991B1B}
+.wa-act{background:#DCF8C6;color:#128C7E}
+.wa-act:hover{background:#A7E8A0}
+
+/* ── FILTER TABS ────────────────────────── */
+.filter-tabs{display:flex;gap:6px;padding:16px 22px;border-bottom:1px solid var(--lgray);flex-wrap:wrap}
+.f-tab{padding:6px 16px;border-radius:50px;font-size:.8rem;font-weight:500;cursor:pointer;border:1.5px solid var(--lgray);background:#fff;color:var(--gray);transition:all .2s}
+.f-tab:hover{border-color:var(--red);color:var(--red)}
+.f-tab.on{background:var(--red);border-color:var(--red);color:#fff}
+
+/* ── EMPTY STATE ────────────────────────── */
+.empty-state{text-align:center;padding:60px 20px;color:var(--gray)}
+.empty-state .ei{font-size:3rem;margin-bottom:16px;opacity:.4}
+.empty-state p{font-size:.9rem;margin-bottom:20px}
+
+/* ── PACKAGES GRID ──────────────────────── */
+.pkg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;padding:22px}
+.pkg-card{border:1px solid var(--lgray);border-radius:10px;overflow:hidden;transition:box-shadow .2s}
+.pkg-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.pkg-img{height:140px;object-fit:cover;width:100%;background:var(--lgray)}
+.pkg-body{padding:16px}
+.pkg-dest{font-size:.68rem;color:var(--red);font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
+.pkg-name{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.pkg-price{font-size:.82rem;color:var(--gray);margin-bottom:12px}
+.pkg-foot{display:flex;gap:8px;padding-top:12px;border-top:1px solid var(--lgray);flex-wrap:wrap}
+.pkg-toggle{padding:4px 10px;border-radius:4px;font-size:.7rem;font-weight:600;border:none;cursor:pointer}
+.pkg-active{background:#D1FAE5;color:#065F46}
+.pkg-inactive{background:#FEE2E2;color:#991B1B}
+
+/* ── BTN ────────────────────────────────── */
+.btn{padding:9px 20px;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer;border:none;transition:all .25s;display:inline-flex;align-items:center;gap:7px}
+.btn-primary{background:var(--red);color:#fff}
+.btn-primary:hover{background:var(--red-lt);transform:translateY(-1px)}
+.btn-outline{background:#fff;color:var(--text);border:1.5px solid var(--lgray)}
+.btn-outline:hover{border-color:var(--red);color:var(--red)}
+
+/* ── MODAL ──────────────────────────────── */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px)}
+.modal-bg.open{opacity:1;pointer-events:all}
+.modal-box{background:#fff;border-radius:14px;width:100%;max-width:580px;max-height:90vh;overflow-y:auto;transform:scale(.94) translateY(16px);transition:transform .35s var(--ease);scrollbar-width:none}
+.modal-box::-webkit-scrollbar{display:none}
+.modal-bg.open .modal-box{transform:scale(1) translateY(0)}
+.modal-hd{padding:20px 24px;border-bottom:1px solid var(--lgray);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:2}
+.modal-hd h3{font-size:1rem;font-weight:600;color:var(--text)}
+.modal-close{background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--gray);line-height:1;padding:4px}
+.modal-close:hover{color:var(--red)}
+.modal-body{padding:24px}
+.modal-foot{padding:16px 24px;border-top:1px solid var(--lgray);display:flex;gap:10px;justify-content:flex-end;background:#F8FAFC}
+
+/* Inquiry detail */
+.inq-field{margin-bottom:16px}
+.inq-field label{font-size:.7rem;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:4px}
+.inq-field p{font-size:.9rem;color:var(--text);line-height:1.6}
+.inq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* Package form */
+.fg{margin-bottom:16px}
+.fg label{display:block;font-size:.75rem;font-weight:600;color:var(--gray);letter-spacing:.8px;text-transform:uppercase;margin-bottom:7px}
+.fg input,.fg select,.fg textarea{width:100%;padding:10px 13px;border:1.5px solid var(--lgray);border-radius:7px;font-size:.88rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .3s;color:var(--text);background:#fff}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--red)}
+.fg textarea{resize:vertical;min-height:80px}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* ── TOAST ──────────────────────────────── */
+#a-toast{position:fixed;bottom:24px;right:24px;z-index:9999;padding:13px 20px;border-radius:10px;font-size:.85rem;font-weight:600;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.2);opacity:0;transform:translateY(12px);transition:all .35s;pointer-events:none;max-width:300px}
+#a-toast.show{opacity:1;transform:translateY(0)}
+#a-toast.success{background:var(--success)}
+#a-toast.error{background:var(--red)}
+
+/* ── LOADER ─────────────────────────────── */
+.spin{display:inline-block;width:20px;height:20px;border:2.5px solid rgba(0,0,0,.1);border-top-color:var(--red);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-row td{text-align:center;padding:40px;color:var(--gray)}
+
+/* ── MOBILE ─────────────────────────────── */
+.mobile-topbar{display:none;background:var(--sb);padding:14px 20px;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.mobile-topbar .mbrand{font-size:1rem;font-weight:700;color:#fff;letter-spacing:1.5px}
+.mobile-topbar .mbrand span{color:var(--red)}
+.mob-toggle{background:none;border:none;cursor:pointer;display:flex;flex-direction:column;gap:4.5px}
+.mob-toggle span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+.mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:150}
+.mob-overlay.open{display:block}
+
+@media(max-width:768px){
+  .app-wrap{grid-template-columns:1fr}
+  #sidebar{position:fixed;left:-240px;z-index:200;transition:left .3s var(--ease);width:240px}
+  #sidebar.open{left:0}
+  .mobile-topbar{display:flex}
+  .top-bar{display:none}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .inq-grid{grid-template-columns:1fr}
+  .fg-row{grid-template-columns:1fr}
+  .page-content{padding:16px}
+}
+@media(max-width:480px){
+  .stats-row{grid-template-columns:1fr 1fr}
+  .pkg-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ── LOGIN ──────────────────────────── -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">
+      <div class="lbrand">AIR<span>SKYLINK</span></div>
+      <p>Admin Panel</p>
+    </div>
+    <h2>Welcome back</h2>
+    <p class="sub">Sign in to manage your travel business</p>
+    <div class="lf-group">
+      <label>Email Address</label>
+      <input type="email" id="l-email" placeholder="admin@airskylink.com" autocomplete="username">
+    </div>
+    <div class="lf-group">
+      <label>Password</label>
+      <input type="password" id="l-pass" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <button class="login-btn" onclick="doLogin()">Sign In →</button>
+    <p class="login-err" id="l-err"></p>
+  </div>
+</div>
+
+<!-- ── APP SHELL ───────────────────────── -->
+<div id="app">
+  <!-- Mobile top bar -->
+  <div class="mobile-topbar">
+    <div class="mbrand">AIR<span>SKYLINK</span></div>
+    <button class="mob-toggle" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mob-overlay" id="mob-overlay" onclick="toggleSidebar()"></div>
+
+  <div class="app-wrap">
+    <!-- SIDEBAR -->
+    <aside id="sidebar">
+      <div class="sb-logo">
+        <div class="brand">AIR<span>SKYLINK</span></div>
+        <div class="sub">Admin Panel</div>
+      </div>
+      <div class="sb-nav">
+        <div class="sb-section">Menu</div>
+        <button class="sb-link active" onclick="showView('dashboard',this)"><span class="ico">📊</span>Dashboard</button>
+        <button class="sb-link" onclick="showView('inquiries',this)"><span class="ico">📩</span>Inquiries<span class="sb-badge" id="new-badge">0</span></button>
+        <button class="sb-link" onclick="showView('packages',this)"><span class="ico">🧳</span>Packages</button>
+        <div class="sb-section">Account</div>
+        <button class="sb-link" onclick="showView('settings',this)"><span class="ico">⚙️</span>Settings</button>
+      </div>
+      <div class="sb-footer">
+        <div class="sb-user">
+          <div class="sb-user-av" id="sb-av">A</div>
+          <div class="sb-user-info">
+            <div class="sb-user-name" id="sb-email">admin</div>
+            <div class="sb-user-role">Administrator</div>
+          </div>
+        </div>
+        <button class="sb-logout" onclick="doLogout()"><span>🚪</span>Sign Out</button>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main id="main">
+      <div class="top-bar">
+        <h1 id="page-title">Dashboard</h1>
+        <span class="tdate" id="tdate"></span>
+      </div>
+      <div class="page-content">
+
+        <!-- ── DASHBOARD VIEW ──────────────── -->
+        <div class="view active" id="view-dashboard">
+          <div class="stats-row">
+            <div class="stat-card c-red">
+              <div class="stat-lbl">Total Inquiries</div>
+              <div class="stat-val" id="st-total">—</div>
+              <div class="stat-sub">All time</div>
+            </div>
+            <div class="stat-card c-warn">
+              <div class="stat-lbl">New / Unread</div>
+              <div class="stat-val" id="st-new">—</div>
+              <div class="stat-sub">Awaiting reply</div>
+            </div>
+            <div class="stat-card c-green">
+              <div class="stat-lbl">Resolved</div>
+              <div class="stat-val" id="st-done">—</div>
+              <div class="stat-sub">Completed</div>
+            </div>
+            <div class="stat-card c-blue">
+              <div class="stat-lbl">Tour Packages</div>
+              <div class="stat-val" id="st-pkg">—</div>
+              <div class="stat-sub">Active listings</div>
+            </div>
+          </div>
+          <div class="sec-card">
+            <div class="sec-head"><h2>Recent Inquiries</h2><span class="sec-meta" id="recent-meta"></span></div>
+            <div class="tbl-wrap">
+              <table>
+                <thead><tr><th>Name</th><th>Phone</th><th>Destination</th><th>Trip Type</th><th>Date</th><th>Status</th><th>Action</th></tr></thead>
+                <tbody id="recent-tbody"><tr class="loading-row"><td colspan="7"><div class="spin"></div> Loading...</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── INQUIRIES VIEW ──────────────── -->
+        <div class="view" id="view-inquiries">
+          <div class="sec-card">
+            <div class="sec-head">
+              <h2>All Inquiries</h2>
+              <button class="btn btn-outline" onclick="loadInquiries()" style="font-size:.78rem;padding:6px 14px">↻ Refresh</button>
+            </div>
+            <div class="filter-tabs">
+              <button class="f-tab on" onclick="filterInq('all',this)">All</button>
+              <button class="f-tab" onclick="filterInq('new',this)">🔴 New</button>
+              <button class="f-tab" onclick="filterInq('read',this)">🔵 Read</button>
+              <button class="f-tab" onclick="filterInq('resolved',this)">🟢 Resolved</button>
+            </div>
+            <div class="tbl-wrap">
+              <table>
+                <thead><tr><th>#</th><th>Name</th><th>Phone</th><th>Destination</th><th>Trip Type</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody id="inq-tbody"><tr class="loading-row"><td colspan="8"><div class="spin"></div> Loading...</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PACKAGES VIEW ──────────────── -->
+        <div class="view" id="view-packages">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+            <div><h2 style="font-size:1rem;font-weight:600">Tour Packages</h2><p style="font-size:.82rem;color:var(--gray);margin-top:3px">Manage your travel packages displayed on the website</p></div>
+            <button class="btn btn-primary" onclick="openPkgModal()">+ Add Package</button>
+          </div>
+          <div class="pkg-grid" id="pkg-grid">
+            <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--gray)"><div class="spin"></div> Loading packages...</div>
+          </div>
+        </div>
+
+        <!-- ── SETTINGS VIEW ──────────────── -->
+        <div class="view" id="view-settings">
+          <div class="sec-card" style="max-width:480px">
+            <div class="sec-head"><h2>Change Password</h2></div>
+            <div class="modal-body">
+              <div class="fg"><label>New Password</label><input type="password" id="s-pass" placeholder="New password (min 6 chars)"></div>
+              <div class="fg"><label>Confirm Password</label><input type="password" id="s-pass2" placeholder="Repeat new password"></div>
+              <button class="btn btn-primary" onclick="changePass()" style="margin-top:8px">Update Password</button>
+            </div>
+          </div>
+          <div class="sec-card" style="max-width:480px;margin-top:20px">
+            <div class="sec-head"><h2>Firebase Setup Guide</h2></div>
+            <div class="modal-body" style="font-size:.85rem;color:var(--gray);line-height:1.8">
+              <p style="margin-bottom:12px">To fully activate Firebase, complete these steps:</p>
+              <ol style="padding-left:18px;display:flex;flex-direction:column;gap:8px">
+                <li>Go to <strong style="color:var(--text)">console.firebase.google.com</strong> → Create project → "airskylink-travels"</li>
+                <li>Enable <strong style="color:var(--text)">Authentication</strong> → Sign-in method → Email/Password → Enable</li>
+                <li>Create your admin account under Authentication → Users → Add user</li>
+                <li>Enable <strong style="color:var(--text)">Firestore Database</strong> → Start in production mode</li>
+                <li>Go to Project Settings → Your apps → Web → Copy config</li>
+                <li>Paste config in <strong style="color:var(--text)">FB_CONFIG</strong> in both <code>airskylink.html</code> and <code>admin.html</code></li>
+                <li>Set Firestore Rules (copy from README or ask Harsh)</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ── INQUIRY DETAIL MODAL ─────────── -->
+<div class="modal-bg" id="inq-modal" onclick="closeInqModal(event)">
+  <div class="modal-box">
+    <div class="modal-hd">
+      <h3>Inquiry Details</h3>
+      <button class="modal-close" onclick="document.getElementById('inq-modal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="inq-grid">
+        <div class="inq-field"><label>Full Name</label><p id="id-name">—</p></div>
+        <div class="inq-field"><label>Phone / WhatsApp</label><p id="id-phone">—</p></div>
+        <div class="inq-field"><label>Email</label><p id="id-email">—</p></div>
+        <div class="inq-field"><label>Destination</label><p id="id-dest">—</p></div>
+        <div class="inq-field"><label>Travel Month</label><p id="id-month">—</p></div>
+        <div class="inq-field"><label>No. of Travellers</label><p id="id-pax">—</p></div>
+        <div class="inq-field"><label>Trip Type</label><p id="id-type">—</p></div>
+        <div class="inq-field"><label>Date Received</label><p id="id-date">—</p></div>
+      </div>
+      <div class="inq-field"><label>Message</label><p id="id-msg" style="background:#F8FAFC;padding:12px;border-radius:8px;line-height:1.7">—</p></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" id="id-wa-btn" onclick="waContact()">💬 WhatsApp</button>
+      <button class="act-btn act-read" style="padding:9px 16px;border-radius:8px;font-size:.83rem" onclick="markStatus(currentInqId,'read')">Mark Read</button>
+      <button class="act-btn act-done" style="padding:9px 16px;border-radius:8px;font-size:.83rem" onclick="markStatus(currentInqId,'resolved')">Mark Resolved</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── PACKAGE MODAL ────────────────── -->
+<div class="modal-bg" id="pkg-modal" onclick="closePkgModal(event)">
+  <div class="modal-box">
+    <div class="modal-hd">
+      <h3 id="pkg-modal-title">Add New Package</h3>
+      <button class="modal-close" onclick="document.getElementById('pkg-modal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="fg-row">
+        <div class="fg"><label>Package Name</label><input type="text" id="p-name" placeholder="e.g. Bali Discovery"></div>
+        <div class="fg"><label>Destination</label><input type="text" id="p-dest" placeholder="e.g. Bali"></div>
+      </div>
+      <div class="fg-row">
+        <div class="fg"><label>Country / Flag</label><input type="text" id="p-ctry" placeholder="e.g. 🇮🇩 Indonesia"></div>
+        <div class="fg"><label>Price (₹)</label><input type="text" id="p-price" placeholder="e.g. ₹65,999"></div>
+      </div>
+      <div class="fg-row">
+        <div class="fg"><label>Duration</label><input type="text" id="p-dur" placeholder="e.g. 5 Nights / 6 Days"></div>
+        <div class="fg"><label>Status</label>
+          <select id="p-active"><option value="true">Active (Visible)</option><option value="false">Inactive (Hidden)</option></select>
+        </div>
+      </div>
+      <div class="fg"><label>Description</label><textarea id="p-desc" placeholder="Brief description of the package..."></textarea></div>
+      <div class="fg"><label>Highlights (one per line)</label><textarea id="p-hl" placeholder="Ancient temples & ceremonies&#10;UNESCO rice terraces&#10;World-class surf spots&#10;Private pool villas"></textarea></div>
+      <div class="fg"><label>Cover Image URL</label><input type="text" id="p-img" placeholder="https://images.unsplash.com/..."></div>
+      <div class="fg"><label>Pexels Video URL (optional)</label><input type="text" id="p-vid" placeholder="https://videos.pexels.com/video-files/..."></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="document.getElementById('pkg-modal').classList.remove('open')">Cancel</button>
+      <button class="btn btn-primary" onclick="savePkg()">Save Package</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="a-toast"></div>
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<script>
+// ══════════════════════════════════════════
+// FIREBASE CONFIG — Paste your config here
+// ══════════════════════════════════════════
+const FB_CONFIG = {
+  apiKey:            "YOUR_API_KEY",
+  authDomain:        "YOUR_PROJECT.firebaseapp.com",
+  projectId:         "YOUR_PROJECT_ID",
+  storageBucket:     "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "000000000000",
+  appId:             "1:000000:web:000000"
+};
+
+// Init Firebase
+firebase.initializeApp(FB_CONFIG);
+const auth = firebase.auth();
+const db   = firebase.firestore();
+
+// ── STATE ─────────────────────────────────
+let allInquiries = [];
+let allPackages  = [];
+let currentInqId = null;
+let editPkgId    = null;
+let currentFilter = 'all';
+
+// ── AUTH ──────────────────────────────────
+auth.onAuthStateChanged(user => {
+  if (user) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    document.getElementById('sb-email').textContent = user.email;
+    document.getElementById('sb-av').textContent = user.email[0].toUpperCase();
+    document.getElementById('tdate').textContent = new Date().toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+    initApp();
+  } else {
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('app').style.display = 'none';
+  }
+});
+
+async function doLogin() {
+  const email = document.getElementById('l-email').value.trim();
+  const pass  = document.getElementById('l-pass').value;
+  const err   = document.getElementById('l-err');
+  const btn   = document.querySelector('.login-btn');
+  if (!email || !pass) { err.textContent = 'Please enter email and password.'; return; }
+  btn.textContent = 'Signing in...'; btn.disabled = true; err.textContent = '';
+  try {
+    await auth.signInWithEmailAndPassword(email, pass);
+  } catch(e) {
+    err.textContent = e.code === 'auth/wrong-password' ? 'Incorrect password.' :
+                      e.code === 'auth/user-not-found' ? 'No account found.' :
+                      e.code === 'auth/invalid-credential' ? 'Invalid email or password.' : e.message;
+    btn.textContent = 'Sign In →'; btn.disabled = false;
+  }
+}
+document.getElementById('l-pass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+
+function doLogout() {
+  if(confirm('Sign out?')) auth.signOut();
+}
+
+// ── APP INIT ──────────────────────────────
+function initApp() {
+  loadInquiries();
+  loadPackages();
+}
+
+// ── NAVIGATION ────────────────────────────
+function showView(id, btn) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + id).classList.add('active');
+  document.querySelectorAll('.sb-link').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  const titles = {dashboard:'Dashboard',inquiries:'Inquiries',packages:'Tour Packages',settings:'Settings'};
+  document.getElementById('page-title').textContent = titles[id] || id;
+  if (window.innerWidth <= 768) closeSidebar();
+}
+
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  const ov = document.getElementById('mob-overlay');
+  sb.classList.toggle('open');
+  ov.classList.toggle('open');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('mob-overlay').classList.remove('open');
+}
+
+// ── TOAST ─────────────────────────────────
+function toast(msg, type='success') {
+  const t = document.getElementById('a-toast');
+  t.textContent = msg; t.className = 'show ' + type;
+  setTimeout(() => { t.className = ''; }, 3500);
+}
+
+// ── INQUIRIES ─────────────────────────────
+async function loadInquiries() {
+  try {
+    const snap = await db.collection('inquiries').orderBy('createdAt','desc').limit(100).get();
+    allInquiries = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    updateStats();
+    renderRecent();
+    renderInquiries(currentFilter);
+    updateBadge();
+  } catch(e) {
+    console.error(e);
+    document.getElementById('inq-tbody').innerHTML = `<tr class="loading-row"><td colspan="8">⚠ Could not load. Check Firebase config.</td></tr>`;
+    document.getElementById('recent-tbody').innerHTML = `<tr class="loading-row"><td colspan="7">⚠ Firebase not configured yet.</td></tr>`;
+  }
+}
+
+function updateBadge() {
+  const newCount = allInquiries.filter(i => i.status === 'new').length;
+  document.getElementById('new-badge').textContent = newCount || '';
+  document.getElementById('new-badge').style.display = newCount ? 'inline-block' : 'none';
+}
+
+function updateStats() {
+  const total    = allInquiries.length;
+  const newCount = allInquiries.filter(i => i.status === 'new').length;
+  const done     = allInquiries.filter(i => i.status === 'resolved').length;
+  document.getElementById('st-total').textContent = total;
+  document.getElementById('st-new').textContent   = newCount;
+  document.getElementById('st-done').textContent  = done;
+  document.getElementById('recent-meta').textContent = `${total} total`;
+}
+
+function fmtDate(ts) {
+  if (!ts) return '—';
+  const d = ts.toDate ? ts.toDate() : new Date(ts);
+  return d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
+}
+
+function badgeHtml(status) {
+  const map = {new:'badge-new',read:'badge-read',resolved:'badge-resolved'};
+  return `<span class="badge ${map[status]||'badge-read'}">${status||'new'}</span>`;
+}
+
+function renderRecent() {
+  const recent = allInquiries.slice(0, 5);
+  if (!recent.length) {
+    document.getElementById('recent-tbody').innerHTML = `<tr class="loading-row"><td colspan="7"><div class="ei">📩</div><p>No inquiries yet.</p></td></tr>`;
+    return;
+  }
+  document.getElementById('recent-tbody').innerHTML = recent.map(i => `
+    <tr>
+      <td><div class="tbl-name">${i.name||'—'}</div></td>
+      <td class="tbl-phone">${i.phone||'—'}</td>
+      <td>${i.destination||'—'}</td>
+      <td>${i.tripType||'—'}</td>
+      <td>${fmtDate(i.createdAt)}</td>
+      <td>${badgeHtml(i.status)}</td>
+      <td><button class="act-btn act-view" onclick="viewInq('${i.id}')">View</button></td>
+    </tr>`).join('');
+}
+
+function renderInquiries(filter = 'all') {
+  currentFilter = filter;
+  const list = filter === 'all' ? allInquiries : allInquiries.filter(i => i.status === filter);
+  if (!list.length) {
+    document.getElementById('inq-tbody').innerHTML = `<tr class="loading-row"><td colspan="8"><div class="ei">📭</div><p>No ${filter==='all'?'':''+filter+' '}inquiries found.</p></td></tr>`;
+    return;
+  }
+  document.getElementById('inq-tbody').innerHTML = list.map((i, idx) => `
+    <tr>
+      <td style="color:var(--gray);font-size:.78rem">${idx+1}</td>
+      <td><div class="tbl-name">${i.name||'—'}</div></td>
+      <td class="tbl-phone">${i.phone||'—'}</td>
+      <td>${i.destination||'—'}</td>
+      <td>${i.tripType||'—'}</td>
+      <td>${fmtDate(i.createdAt)}</td>
+      <td>${badgeHtml(i.status)}</td>
+      <td>
+        <div class="tbl-actions">
+          <button class="act-btn act-view" onclick="viewInq('${i.id}')">👁 View</button>
+          <button class="act-btn wa-act" onclick="waQuick('${i.phone}')">💬 WA</button>
+          ${i.status!=='resolved'?`<button class="act-btn act-done" onclick="markStatus('${i.id}','resolved')">✓ Done</button>`:''}
+        </div>
+      </td>
+    </tr>`).join('');
+}
+
+function filterInq(f, btn) {
+  document.querySelectorAll('.f-tab').forEach(t => t.classList.remove('on'));
+  btn.classList.add('on');
+  renderInquiries(f);
+}
+
+function viewInq(id) {
+  const i = allInquiries.find(x => x.id === id);
+  if (!i) return;
+  currentInqId = id;
+  document.getElementById('id-name').textContent  = i.name || '—';
+  document.getElementById('id-phone').textContent = i.phone || '—';
+  document.getElementById('id-email').textContent = i.email || '—';
+  document.getElementById('id-dest').textContent  = i.destination || '—';
+  document.getElementById('id-month').textContent = i.travelMonth || '—';
+  document.getElementById('id-pax').textContent   = i.travellers || '—';
+  document.getElementById('id-type').textContent  = i.tripType || '—';
+  document.getElementById('id-date').textContent  = fmtDate(i.createdAt);
+  document.getElementById('id-msg').textContent   = i.message || '—';
+  document.getElementById('inq-modal').classList.add('open');
+  if (i.status === 'new') markStatus(id, 'read', true);
+}
+
+function closeInqModal(e) { if(e.target.id==='inq-modal') document.getElementById('inq-modal').classList.remove('open'); }
+
+async function markStatus(id, status, silent=false) {
+  try {
+    await db.collection('inquiries').doc(id).update({ status });
+    const idx = allInquiries.findIndex(i => i.id === id);
+    if (idx > -1) allInquiries[idx].status = status;
+    renderInquiries(currentFilter);
+    renderRecent();
+    updateStats();
+    updateBadge();
+    if (!silent) { document.getElementById('inq-modal').classList.remove('open'); toast(`Marked as ${status}.`); }
+  } catch(e) { toast('Error: ' + e.message, 'error'); }
+}
+
+function waContact() {
+  const phone = document.getElementById('id-phone').textContent.replace(/\D/g,'');
+  const name  = document.getElementById('id-name').textContent;
+  const dest  = document.getElementById('id-dest').textContent;
+  window.open(`https://wa.me/${phone}?text=Hello%20${encodeURIComponent(name)}%2C%20thank%20you%20for%20your%20enquiry%20about%20${encodeURIComponent(dest)}%20with%20Air%20Skylink%20Travels.%20`, '_blank');
+}
+function waQuick(phone) {
+  const p = (phone||'').replace(/\D/g,'');
+  window.open(`https://wa.me/${p}`, '_blank');
+}
+
+// ── PACKAGES ──────────────────────────────
+async function loadPackages() {
+  try {
+    const snap = await db.collection('packages').orderBy('createdAt','desc').get();
+    allPackages = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    document.getElementById('st-pkg').textContent = allPackages.filter(p => p.active).length;
+    renderPackages();
+  } catch(e) {
+    document.getElementById('pkg-grid').innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--gray)">⚠ Could not load packages. Check Firebase config.</div>`;
+  }
+}
+
+function renderPackages() {
+  const grid = document.getElementById('pkg-grid');
+  if (!allPackages.length) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--gray)">
+      <div style="font-size:3rem;margin-bottom:16px;opacity:.4">🧳</div>
+      <p style="margin-bottom:20px">No packages yet. Add your first tour package!</p>
+      <button class="btn btn-primary" onclick="openPkgModal()">+ Add First Package</button></div>`;
+    return;
+  }
+  grid.innerHTML = allPackages.map(p => `
+    <div class="pkg-card">
+      ${p.image ? `<img class="pkg-img" src="${p.image}" alt="${p.name}" onerror="this.style.background='#E5E7EB';this.removeAttribute('src')">` : '<div class="pkg-img" style="display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:2rem">✈️</div>'}
+      <div class="pkg-body">
+        <div class="pkg-dest">${p.country||''}</div>
+        <div class="pkg-name">${p.name||'—'}</div>
+        <div class="pkg-price">${p.price||''} · ${p.duration||''}</div>
+        <div class="pkg-foot">
+          <button class="pkg-toggle ${p.active?'pkg-active':'pkg-inactive'}" onclick="togglePkg('${p.id}',${!p.active})">${p.active?'● Active':'○ Inactive'}</button>
+          <button class="act-btn act-view" onclick="openPkgModal('${p.id}')">✏ Edit</button>
+          <button class="act-btn act-del" onclick="deletePkg('${p.id}')">🗑</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function openPkgModal(id=null) {
+  editPkgId = id;
+  const modal = document.getElementById('pkg-modal');
+  document.getElementById('pkg-modal-title').textContent = id ? 'Edit Package' : 'Add New Package';
+  if (id) {
+    const p = allPackages.find(x => x.id===id);
+    if (!p) return;
+    document.getElementById('p-name').value  = p.name||'';
+    document.getElementById('p-dest').value  = p.destination||'';
+    document.getElementById('p-ctry').value  = p.country||'';
+    document.getElementById('p-price').value = p.price||'';
+    document.getElementById('p-dur').value   = p.duration||'';
+    document.getElementById('p-active').value= String(p.active!==false);
+    document.getElementById('p-desc').value  = p.description||'';
+    document.getElementById('p-hl').value    = (p.highlights||[]).join('\n');
+    document.getElementById('p-img').value   = p.image||'';
+    document.getElementById('p-vid').value   = p.video||'';
+  } else {
+    ['p-name','p-dest','p-ctry','p-price','p-dur','p-desc','p-hl','p-img','p-vid'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('p-active').value='true';
+  }
+  modal.classList.add('open');
+}
+function closePkgModal(e) { if(e.target.id==='pkg-modal') document.getElementById('pkg-modal').classList.remove('open'); }
+
+async function savePkg() {
+  const name  = document.getElementById('p-name').value.trim();
+  const dest  = document.getElementById('p-dest').value.trim();
+  if (!name || !dest) { toast('Name & Destination are required.','error'); return; }
+  const data = {
+    name, destination:dest,
+    country:  document.getElementById('p-ctry').value.trim(),
+    price:    document.getElementById('p-price').value.trim(),
+    duration: document.getElementById('p-dur').value.trim(),
+    active:   document.getElementById('p-active').value === 'true',
+    description: document.getElementById('p-desc').value.trim(),
+    highlights: document.getElementById('p-hl').value.split('\n').map(s=>s.trim()).filter(Boolean),
+    image:    document.getElementById('p-img').value.trim(),
+    video:    document.getElementById('p-vid').value.trim(),
+    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+  };
+  try {
+    if (editPkgId) {
+      await db.collection('packages').doc(editPkgId).update(data);
+      toast('Package updated!');
+    } else {
+      data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+      await db.collection('packages').add(data);
+      toast('Package added!');
+    }
+    document.getElementById('pkg-modal').classList.remove('open');
+    loadPackages();
+  } catch(e) { toast('Error: ' + e.message, 'error'); }
+}
+
+async function togglePkg(id, active) {
+  try {
+    await db.collection('packages').doc(id).update({ active });
+    toast(active ? 'Package activated.' : 'Package hidden.');
+    loadPackages();
+  } catch(e) { toast('Error: ' + e.message,'error'); }
+}
+
+async function deletePkg(id) {
+  if (!confirm('Delete this package permanently?')) return;
+  try {
+    await db.collection('packages').doc(id).delete();
+    toast('Package deleted.');
+    loadPackages();
+  } catch(e) { toast('Error: ' + e.message,'error'); }
+}
+
+// ── SETTINGS ──────────────────────────────
+async function changePass() {
+  const p1 = document.getElementById('s-pass').value;
+  const p2 = document.getElementById('s-pass2').value;
+  if (!p1 || p1.length < 6) { toast('Password must be at least 6 characters.','error'); return; }
+  if (p1 !== p2) { toast('Passwords do not match.','error'); return; }
+  try {
+    await auth.currentUser.updatePassword(p1);
+    toast('Password updated successfully!');
+    document.getElementById('s-pass').value = '';
+    document.getElementById('s-pass2').value = '';
+  } catch(e) { toast('Error: ' + e.message,'error'); }
+}
+</script>
+</body>
+</html>
