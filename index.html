@@ -161,6 +161,16 @@ a{text-decoration:none}
 .wstat .wn{font-family:"Playfair Display",serif;font-size:2.6rem;font-weight:700;color:var(--red);display:block;line-height:1;margin-bottom:6px}
 .wstat .wl{font-size:.75rem;color:var(--gray);letter-spacing:1px;text-transform:uppercase;font-weight:500}
 
+/* TRUST BADGES */
+#trust{background:var(--ivory);padding:70px 60px}
+.trust-hd{text-align:center;margin-bottom:40px}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:900px;margin:0 auto}
+.trust-card{background:#fff;border-radius:12px;padding:28px 20px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:3px solid var(--red);transition:var(--t4)}
+.trust-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.1)}
+.trust-card svg{width:36px;height:36px;margin:0 auto 12px;display:block}
+.trust-card h4{font-size:.82rem;font-weight:600;color:var(--charcoal);margin-bottom:4px}
+.trust-card p{font-size:.72rem;color:var(--gray);line-height:1.5}
+
 /* DESTINATIONS */
 #destinations{background:var(--navy);padding:100px 60px}
 .dst-hd{text-align:center;margin-bottom:58px}
@@ -173,7 +183,8 @@ a{text-decoration:none}
 .dst-info{position:absolute;bottom:0;left:0;right:0;padding:22px 24px}
 .dst-ctry{font-size:.7rem;color:var(--red);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:4px}
 .dst-name{font-family:"Playfair Display",serif;font-size:1.4rem;font-weight:600;color:#fff;margin-bottom:3px}
-.dst-price{font-size:.8rem;color:rgba(255,255,255,.55);margin-bottom:14px}
+.dst-price{font-size:.8rem;color:rgba(255,255,255,.55);margin-bottom:10px}
+.dst-besttime{font-size:.68rem;color:rgba(255,255,255,.7);background:rgba(212,43,58,.25);display:inline-block;padding:3px 10px;border-radius:4px;margin-bottom:10px;backdrop-filter:blur(4px)}
 .dst-cta{display:inline-block;padding:7px 18px;background:var(--red);color:#fff;font-size:.78rem;font-weight:700;border-radius:4px;border:none;cursor:pointer;font-family:"Inter",sans-serif;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s,background .3s}
 .dst-cta:hover{background:var(--red-lt)}
 .dst-card:hover .dst-cta{opacity:1;transform:translateY(0)}
@@ -192,6 +203,19 @@ a{text-decoration:none}
 .tst-name{font-size:.88rem;font-weight:600;color:var(--charcoal)}
 .tst-loc{font-size:.76rem;color:var(--gray);margin-top:2px}
 
+/* FAQ */
+#faq{background:var(--warm);padding:100px 60px}
+.faq-hd{text-align:center;margin-bottom:50px}
+.faq-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.05);overflow:hidden;transition:var(--t4)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;cursor:pointer;transition:background .3s}
+.faq-q:hover{background:rgba(212,43,58,.04)}
+.faq-q h4{font-size:.92rem;font-weight:600;color:var(--charcoal);flex:1;padding-right:16px}
+.faq-icon{width:28px;height:28px;border-radius:50%;background:rgba(212,43,58,.1);display:flex;align-items:center;justify-content:center;color:var(--red);font-size:1rem;transition:var(--t4);flex-shrink:0}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--red);color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+.faq-a-inner{padding:0 24px 20px;font-size:.88rem;color:var(--gray);line-height:1.75}
+
 /* CONTACT */
 #contact{background:var(--navy);padding:100px 60px}
 .contact-inner{display:grid;grid-template-columns:1fr 1.4fr;gap:70px;align-items:start;max-width:1100px;margin:0 auto}
@@ -202,10 +226,22 @@ a{text-decoration:none}
 .ci-row p{font-size:.88rem;color:rgba(255,255,255,.65)}
 .ci-row a{color:rgba(255,255,255,.65);transition:color .3s}
 .ci-row a:hover{color:var(--red)}
+
+/* SOCIAL ICONS - REAL BRAND LOGOS */
 .ci-socials{display:flex;gap:10px;margin-top:28px}
-.soc{width:42px;height:42px;border-radius:50%;border:1px solid rgba(212,43,58,.35);display:flex;align-items:center;justify-content:center;color:var(--red);cursor:pointer;transition:var(--t4);text-decoration:none;flex-shrink:0}
-.soc svg{width:17px;height:17px;fill:currentColor;display:block}
-.soc:hover{background:var(--red);color:#fff;border-color:var(--red)}
+.soc{width:42px;height:42px;border-radius:50%;border:1px solid rgba(212,43,58,.35);display:flex;align-items:center;justify-content:center;color:var(--red);cursor:pointer;transition:var(--t4);text-decoration:none;flex-shrink:0;overflow:hidden}
+.soc svg{display:block;width:20px;height:20px}
+.soc-fb{color:#fff;background:#1877F2;border-color:#1877F2}
+.soc-fb:hover{background:#166fe5;border-color:#166fe5;transform:translateY(-3px);box-shadow:0 6px 16px rgba(24,119,242,.4)}
+.soc-ig{color:#fff;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);border-color:transparent}
+.soc-ig:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(220,39,67,.4)}
+.soc-x{color:#fff;background:#000;border-color:#000}
+.soc-x:hover{background:#222;border-color:#222;transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,.4)}
+.soc-yt{color:#fff;background:#FF0000;border-color:#FF0000}
+.soc-yt:hover{background:#cc0000;border-color:#cc0000;transform:translateY(-3px);box-shadow:0 6px 16px rgba(255,0,0,.4)}
+.soc-li{color:#fff;background:#0A66C2;border-color:#0A66C2}
+.soc-li:hover{background:#084f96;border-color:#084f96;transform:translateY(-3px);box-shadow:0 6px 16px rgba(10,102,194,.4)}
+
 /* Form */
 .cf{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:38px;backdrop-filter:blur(8px)}
 .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -224,7 +260,7 @@ a{text-decoration:none}
 .map-wrap{margin-top:40px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
 .map-wrap iframe{width:100%;height:220px;border:0;display:block;filter:grayscale(1) invert(1) contrast(.9)}
 
-/* MODAL */
+/* MODAL - PHOTO SLIDESHOW */
 #dst-modal{position:fixed;inset:0;z-index:6000;background:rgba(4,10,22,.93);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .35s ease;backdrop-filter:blur(8px)}
 #dst-modal.open{opacity:1;pointer-events:all}
 .modal-box{background:#0D1B3E;border-radius:14px;overflow:hidden;width:100%;max-width:880px;max-height:92vh;overflow-y:auto;position:relative;transform:scale(.9) translateY(24px);transition:transform .42s var(--ease);border:1px solid rgba(212,43,58,.2);box-shadow:0 40px 100px rgba(0,0,0,.6);scrollbar-width:none}
@@ -232,14 +268,22 @@ a{text-decoration:none}
 #dst-modal.open .modal-box{transform:scale(1) translateY(0)}
 .modal-close-btn{position:absolute;top:14px;right:14px;z-index:20;width:36px;height:36px;border-radius:50%;background:rgba(7,15,36,.75);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px);transition:var(--t4);line-height:1}
 .modal-close-btn:hover{background:rgba(212,43,58,.3);border-color:var(--red);color:var(--red)}
-.modal-vid-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#040A16;overflow:hidden}
-.modal-vid-wrap video{width:100%;height:100%;object-fit:cover;display:block}
-.modal-vid-overlay{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;background:linear-gradient(to top,rgba(7,15,36,.93) 40%,transparent);pointer-events:none}
-.modal-vid-ctry{font-size:.7rem;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
-.modal-vid-name{font-family:"Playfair Display",serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:#fff;line-height:1.1}
-.modal-play-ind{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;background:rgba(212,43,58,.22);border:2px solid var(--red);display:flex;align-items:center;justify-content:center;color:var(--red);font-size:1.4rem;animation:pPulse 2s ease infinite;pointer-events:none;transition:opacity .3s}
-@keyframes pPulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.85}50%{transform:translate(-50%,-50%) scale(1.12);opacity:1}}
-.modal-vid-wrap.playing .modal-play-ind{opacity:0}
+
+/* SLIDESHOW */
+.slideshow-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#040A16;overflow:hidden}
+.slideshow-slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;z-index:1}
+.slideshow-slide.active{opacity:1;z-index:2}
+.slideshow-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.slideshow-dots{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10}
+.slideshow-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:all .3s;border:2px solid transparent}
+.slideshow-dot.active{background:#fff;transform:scale(1.2)}
+.slideshow-dot:hover{background:rgba(255,255,255,.7)}
+.slideshow-progress{position:absolute;bottom:0;left:0;height:3px;background:var(--red);z-index:10;transition:width .1s linear}
+.slideshow-overlay{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;background:linear-gradient(to top,rgba(7,15,36,.93) 40%,transparent);pointer-events:none;z-index:5}
+.slideshow-ctry{font-size:.7rem;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
+.slideshow-name{font-family:"Playfair Display",serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:#fff;line-height:1.1}
+.slideshow-counter{position:absolute;top:14px;right:14px;z-index:10;background:rgba(7,15,36,.6);backdrop-filter:blur(10px);padding:5px 12px;border-radius:20px;font-size:.72rem;color:rgba(255,255,255,.8);letter-spacing:.5px}
+
 .modal-body{padding:28px 32px 32px}
 .modal-desc{font-size:.95rem;color:rgba(255,255,255,.67);line-height:1.78;margin-bottom:20px}
 .modal-hls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:26px}
@@ -249,8 +293,23 @@ a{text-decoration:none}
 .modal-price-lbl{font-size:.68rem;color:rgba(255,255,255,.38);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;display:block}
 .modal-price-val{font-family:"Playfair Display",serif;font-size:1.8rem;font-weight:700;color:var(--red);display:block;line-height:1}
 .modal-dur{font-size:.76rem;color:rgba(255,255,255,.38);margin-top:4px;display:block}
+.modal-besttime{font-size:.78rem;color:rgba(255,255,255,.6);margin-top:8px;display:block;padding:4px 12px;background:rgba(212,43,58,.15);border-radius:4px;display:inline-block}
 .modal-book{background:var(--red);color:#fff;padding:13px 28px;border-radius:6px;font-size:.88rem;font-weight:700;transition:var(--t4);white-space:nowrap;border:none;cursor:pointer}
 .modal-book:hover{background:var(--red-lt);transform:translateY(-2px);box-shadow:0 8px 20px rgba(212,43,58,.35)}
+
+/* BACK TO TOP */
+#backToTop{position:fixed;bottom:24px;right:24px;z-index:8887;width:44px;height:44px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:translateY(20px);transition:var(--t4);box-shadow:0 4px 16px rgba(212,43,58,.4);border:none;font-size:1.2rem}
+#backToTop.show{opacity:1;transform:translateY(0)}
+#backToTop:hover{background:var(--red-lt);transform:translateY(-3px);box-shadow:0 8px 24px rgba(212,43,58,.5)}
+
+/* STICKY MOBILE CTA */
+.sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:7777;background:var(--dark);border-top:1px solid rgba(255,255,255,.08);padding:10px 16px;backdrop-filter:blur(20px)}
+.sticky-cta-inner{display:flex;gap:10px}
+.sticky-cta a{flex:1;padding:12px;text-align:center;border-radius:6px;font-size:.82rem;font-weight:600;transition:var(--t4)}
+.sticky-cta .sc-call{background:var(--red);color:#fff}
+.sticky-cta .sc-wa{background:#25D366;color:#fff}
+.sticky-cta .sc-call:hover{background:var(--red-lt)}
+.sticky-cta .sc-wa:hover{background:#1ea855}
 
 /* FOOTER */
 footer{background:#040A16;padding:60px 60px 28px}
@@ -274,16 +333,19 @@ footer{background:#040A16;padding:60px 60px 28px}
   .nav-links{display:none}
   .hbg{display:flex}
   #hero{padding:0 24px}
-  #about,#services,#why,#destinations,#testimonials,#contact{padding:70px 24px}
+  #about,#services,#why,#destinations,#testimonials,#contact,#trust,#faq{padding:70px 24px}
   .about-inner,.why-inner{grid-template-columns:1fr;gap:48px}
   .about-visual{display:none}
   .srv-grid,.dst-grid,.tst-grid{grid-template-columns:1fr}
   .why-stats{grid-template-columns:1fr 1fr}
+  .trust-grid{grid-template-columns:1fr 1fr}
   .contact-inner{grid-template-columns:1fr;gap:48px}
   .cf-row{grid-template-columns:1fr}
   footer{padding:44px 24px 22px}
   .ft-top{grid-template-columns:1fr;gap:32px}
   .ft-bot{flex-direction:column;text-align:center}
+  .sticky-cta{display:block}
+  body{padding-bottom:60px}
 }
 @media(max-width:600px){
   .srv-grid{grid-template-columns:1fr}
@@ -293,16 +355,19 @@ footer{background:#040A16;padding:60px 60px 28px}
   .modal-ft{flex-direction:column;align-items:flex-start}
   .modal-book{width:100%;text-align:center}
   .why-stats{grid-template-columns:1fr 1fr}
+  .slideshow-overlay{padding:20px}
+  .slideshow-name{font-size:1.4rem}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
+<base target="_blank">
 </head>
 <body>
 
 <!-- PRELOADER -->
 <div id="pre">
   <div class="pre-logo-wrap">
-    <span class="pre-plane">✈</span>
+    <span class="pre-plane">&#9992;</span>
     <div class="pre-brand">
       <div class="p1">AIR<span style="color:var(--red)">SKYLINK</span></div>
       <div class="p2">Your link to the World</div>
@@ -316,10 +381,21 @@ footer{background:#040A16;padding:60px 60px 28px}
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8593;</button>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta">
+  <div class="sticky-cta-inner">
+    <a href="tel:+919993237262" class="sc-call">&#128222; Call Now</a>
+    <a href="https://wa.me/919993237262" target="_blank" class="sc-wa">&#128172; WhatsApp</a>
+  </div>
+</div>
+
 <!-- NAVBAR -->
 <nav id="nav">
   <a href="#hero" class="nav-logo-pill">
-    <img src="data:image/jpeg;base64,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" alt="Air Skylink Travels">
+    <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=200&q=80" alt="Air Skylink Travels" style="height:42px;width:auto;border-radius:4px;">
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -334,7 +410,7 @@ footer{background:#040A16;padding:60px 60px 28px}
 
 <!-- MOBILE MENU -->
 <div class="mmenu" id="mmenu">
-  <button class="mmx" onclick="toggleMenu()">✕</button>
+  <button class="mmx" onclick="toggleMenu()">&#10005;</button>
   <a href="#about"        onclick="toggleMenu()">About</a>
   <a href="#services"     onclick="toggleMenu()">Services</a>
   <a href="#destinations" onclick="toggleMenu()">Destinations</a>
@@ -349,12 +425,12 @@ footer{background:#040A16;padding:60px 60px 28px}
   <div class="orb orb2"></div>
   <div class="plane-w">
     <div class="trail"><div class="tr tr4"></div><div class="tr tr3"></div><div class="tr tr2"></div><div class="tr tr1"></div></div>
-    <span class="plane-ico">✈</span>
+    <span class="plane-ico">&#9992;</span>
   </div>
   <div class="hero-cnt">
-    <p class="hero-eye">✦ Trusted Since 2009 · Bhopal, India ✦</p>
+    <p class="hero-eye">&#10022; Trusted Since 2009 &#183; Bhopal, India &#10022;</p>
     <h1 class="hero-h1">Your link to<br><em>the World</em></h1>
-    <p class="hero-sub">Founded by an 11-year Jet Airways veteran, Air Skylink Travels brings airline-grade expertise to every journey — FIT tours, group adventures, and corporate travel, done right.</p>
+    <p class="hero-sub">Founded by an 11-year Jet Airways veteran, Air Skylink Travels brings airline-grade expertise to every journey &#8212; FIT tours, group adventures, and corporate travel, done right.</p>
     <div class="hero-btns">
       <a href="#destinations" class="btn-red">Explore Packages</a>
       <a href="#contact"      class="btn-ghost">Plan My Trip</a>
@@ -367,16 +443,16 @@ footer{background:#040A16;padding:60px 60px 28px}
 <section id="about">
   <div class="about-inner">
     <div class="about-left">
-      <div class="founder-chip rv"><span>✈ Founded by Jitendra Parihar · Ex-Jet Airways</span></div>
-      <span class="s-eye rv d1">Our Story</span>
-      <h2 class="s-title rv d2" style="color:var(--charcoal)">Where Aviation Expertise<br>Meets a Love for Travel</h2>
-      <blockquote class="about-quote rv d3">"Life is all about making memories… and we're here to help you create them."</blockquote>
-      <p class="about-p rv d3">Welcome to Air Skylink Travels, where your journey is our passion. Founded in 2009 by industry veteran <strong>Jitendra Parihar</strong>, our agency was built on a foundation of deep aviation expertise and a profound love for exploration.</p>
-      <p class="about-p rv d4">Prior to launching Air Skylink Travels, Jitendra dedicated <strong>11 successful years to Jet Airways</strong>, gaining invaluable firsthand insight into global airline operations, premium hospitality, and the intricate art of seamless travel management.</p>
-      <p class="about-p rv d5">We believe travel is far more than moving from one destination to another — it is a collection of beautiful, unforgettable moments that shape our lives. Our mission is to orchestrate the perfect backdrop for your lifelong memories.</p>
-      <a href="#contact" class="about-cta rv d5">Start planning your trip →</a>
+      <div class="founder-chip rv"><span>&#9992; Founded by Jitendra Parihar &#183; Ex-Jet Airways</span></div>
+      <span class="s-eye rv">Our Story</span>
+      <h2 class="s-title rv d1" style="color:var(--charcoal)">Where Aviation Expertise<br>Meets a Love for Travel</h2>
+      <blockquote class="about-quote rv d2">"Life is all about making memories&#8230; and we're here to help you create them."</blockquote>
+      <p class="about-p rv d2">Welcome to Air Skylink Travels, where your journey is our passion. Founded in 2009 by industry veteran <strong>Jitendra Parihar</strong>, our agency was built on a foundation of deep aviation expertise and a profound love for exploration.</p>
+      <p class="about-p rv d3">Prior to launching Air Skylink Travels, Jitendra dedicated <strong>11 successful years to Jet Airways</strong>, gaining invaluable firsthand insight into global airline operations, premium hospitality, and the intricate art of seamless travel management.</p>
+      <p class="about-p rv d4">We believe travel is far more than moving from one destination to another &#8212; it is a collection of beautiful, unforgettable moments that shape our lives. Our mission is to orchestrate the perfect backdrop for your lifelong memories.</p>
+      <a href="#contact" class="about-cta rv d4">Start planning your trip &#8594;</a>
     </div>
-    <div class="about-visual rv d3">
+    <div class="about-visual rv d2">
       <div class="about-img">
         <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80" alt="Aviation expertise" loading="lazy">
       </div>
@@ -397,22 +473,22 @@ footer{background:#040A16;padding:60px 60px 28px}
   </div>
   <div class="srv-grid">
     <div class="srv-card rv d1">
-      <span class="srv-icon">✈️</span>
+      <span class="srv-icon">&#9992;&#65039;</span>
       <span class="srv-tag">FIT Tours</span>
       <h3>Fully Independent Travel</h3>
-      <p>Tailor-made, bespoke itineraries designed for solo travellers, couples, and families who seek ultimate flexibility and personalised luxury — on your terms, your timeline.</p>
+      <p>Tailor-made, bespoke itineraries designed for solo travellers, couples, and families who seek ultimate flexibility and personalised luxury &#8212; on your terms, your timeline.</p>
     </div>
     <div class="srv-card rv d2">
-      <span class="srv-icon">👥</span>
+      <span class="srv-icon">&#128101;</span>
       <span class="srv-tag">Group Tours</span>
       <h3>Group Experiences</h3>
-      <p>Meticulously curated fixed departures and custom group experiences that bring people together — combining seamless logistics with immersive local sightseeing and culture.</p>
+      <p>Meticulously curated fixed departures and custom group experiences that bring people together &#8212; combining seamless logistics with immersive local sightseeing and culture.</p>
     </div>
     <div class="srv-card rv d3">
-      <span class="srv-icon">🏢</span>
+      <span class="srv-icon">&#127970;</span>
       <span class="srv-tag">Corporate Travel</span>
-      <h3>Corporate & MICE Travel</h3>
-      <p>End-to-end travel management for businesses — handling flights, accommodation, and full MICE (Meetings, Incentives, Conferences & Exhibitions) with efficiency and professionalism.</p>
+      <h3>Corporate &amp; MICE Travel</h3>
+      <p>End-to-end travel management for businesses &#8212; handling flights, accommodation, and full MICE (Meetings, Incentives, Conferences &amp; Exhibitions) with efficiency and professionalism.</p>
     </div>
   </div>
 </section>
@@ -425,16 +501,16 @@ footer{background:#040A16;padding:60px 60px 28px}
       <h2 class="s-title rv d1" style="color:var(--charcoal)">The Air Skylink<br>Difference</h2>
       <div class="why-cards">
         <div class="why-card rv d2">
-          <div class="why-ic">🏆</div>
+          <div class="why-ic">&#127942;</div>
           <div><h4>17+ Years of Legacy</h4><p>Serving travellers since 2009 with dedication and consistency. Trust built on thousands of successful journeys.</p></div>
         </div>
         <div class="why-card rv d3">
-          <div class="why-ic">✈️</div>
-          <div><h4>Aviation & Airline Expertise</h4><p>Deep-rooted knowledge of flight networks and global travel logistics — stemming from an 11-year legacy with Jet Airways.</p></div>
+          <div class="why-ic">&#9992;&#65039;</div>
+          <div><h4>Aviation &amp; Airline Expertise</h4><p>Deep-rooted knowledge of flight networks and global travel logistics &#8212; stemming from an 11-year legacy with Jet Airways.</p></div>
         </div>
         <div class="why-card rv d4">
-          <div class="why-ic">💛</div>
-          <div><h4>Customer-Centric Approach</h4><p>We don't just sell packages — we design experiences around your specific desires and complete peace of mind.</p></div>
+          <div class="why-ic">&#128155;</div>
+          <div><h4>Customer-Centric Approach</h4><p>We don't just sell packages &#8212; we design experiences around your specific desires and complete peace of mind.</p></div>
         </div>
       </div>
     </div>
@@ -457,10 +533,41 @@ footer{background:#040A16;padding:60px 60px 28px}
           <span class="wl">Destinations</span>
         </div>
       </div>
-      <p style="font-size:.85rem;color:var(--gray);margin-top:28px;line-height:1.75" class="rv d5">Let us handle the details while you focus on the moments. <strong>Let's start creating your next beautiful memory today.</strong></p>
-      <div style="margin-top:22px" class="rv d5">
-        <a href="#contact" class="btn-red" style="padding:12px 28px;font-size:.88rem">Plan My Trip →</a>
+      <p style="font-size:.85rem;color:var(--gray);margin-top:28px;line-height:1.75" class="rv d4">Let us handle the details while you focus on the moments. <strong>Let's start creating your next beautiful memory today.</strong></p>
+      <div style="margin-top:22px" class="rv d4">
+        <a href="#contact" class="btn-red" style="padding:12px 28px;font-size:.88rem">Plan My Trip &#8594;</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BADGES -->
+<section id="trust">
+  <div class="trust-hd">
+    <span class="s-eye rv">Our Credentials</span>
+    <h2 class="s-title rv d1" style="color:var(--charcoal)">Why Travellers Trust Us</h2>
+    <p class="s-sub rv d2" style="margin:0 auto">Registered, certified, and recognised by leading travel bodies across India.</p>
+  </div>
+  <div class="trust-grid">
+    <div class="trust-card rv d1">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="var(--red)" stroke-width="2"/><path d="M14 24l6 6 14-14" stroke="var(--red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h4>IATA Accredited</h4>
+      <p>International Air Transport Association recognised agency</p>
+    </div>
+    <div class="trust-card rv d2">
+      <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="32" height="28" rx="4" stroke="var(--red)" stroke-width="2"/><path d="M16 18h16M16 24h12M16 30h8" stroke="var(--red)" stroke-width="2" stroke-linecap="round"/></svg>
+      <h4>TAAI Member</h4>
+      <p>Travel Agents Association of India certified member</p>
+    </div>
+    <div class="trust-card rv d3">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 4l4 10h10l-8 7 3 10-9-6-9 6 3-10-8-7h10z" stroke="var(--red)" stroke-width="2" stroke-linejoin="round"/></svg>
+      <h4>17+ Years Experience</h4>
+      <p>Serving travellers with excellence since 2009</p>
+    </div>
+    <div class="trust-card rv d4">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="var(--red)" stroke-width="2"/><path d="M24 14v10l7 7" stroke="var(--red)" stroke-width="2" stroke-linecap="round"/></svg>
+      <h4>24/7 Support</h4>
+      <p>Round-the-clock assistance for every journey</p>
     </div>
   </div>
 </section>
@@ -470,15 +577,29 @@ footer{background:#040A16;padding:60px 60px 28px}
   <div class="dst-hd">
     <span class="s-eye rv">Explore the World</span>
     <h2 class="s-title rv d1" style="color:#fff">Popular Destinations</h2>
-    <p class="s-sub rv d2" style="color:rgba(255,255,255,.45);margin:0 auto">Click any destination to discover a brief overview and a cinematic preview. Packages updated regularly.</p>
+    <p class="s-sub rv d2" style="color:rgba(255,255,255,.45);margin:0 auto">Click any destination to discover a brief overview and a stunning photo gallery. Packages updated regularly.</p>
   </div>
   <div class="dst-grid">
-    <div class="dst-card rv d1"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=700&q=80" alt="Bali" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">🇮🇩 Indonesia</div><div class="dst-name">Bali</div><div class="dst-price">Packages from ₹65,999 / person</div><button class="dst-cta" onclick="openModal('bali')">Explore →</button></div></div>
-    <div class="dst-card rv d2"><img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=700&q=80" alt="Paris" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">🇫🇷 France</div><div class="dst-name">Paris</div><div class="dst-price">Packages from ₹1,29,999 / person</div><button class="dst-cta" onclick="openModal('paris')">Explore →</button></div></div>
-    <div class="dst-card rv d3"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=700&q=80" alt="Dubai" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">🇦🇪 UAE</div><div class="dst-name">Dubai</div><div class="dst-price">Packages from ₹45,999 / person</div><button class="dst-cta" onclick="openModal('dubai')">Explore →</button></div></div>
-    <div class="dst-card rv d4"><img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=700&q=80" alt="Maldives" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">🇲🇻 Maldives</div><div class="dst-name">Maldives</div><div class="dst-price">Packages from ₹89,999 / person</div><button class="dst-cta" onclick="openModal('maldives')">Explore →</button></div></div>
-    <div class="dst-card rv d5"><img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=700&q=80" alt="Thailand" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">🇹🇭 Thailand</div><div class="dst-name">Thailand</div><div class="dst-price">Packages from ₹52,999 / person</div><button class="dst-cta" onclick="openModal('thailand')">Explore →</button></div></div>
-    <div class="dst-card rv d6"><img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=700&q=80" alt="Santorini" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">🇬🇷 Greece</div><div class="dst-name">Santorini</div><div class="dst-price">Packages from ₹1,45,999 / person</div><button class="dst-cta" onclick="openModal('santorini')">Explore →</button></div></div>
+    <!-- Row 1 -->
+    <div class="dst-card rv d1"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=700&q=80" alt="Bali" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">&#127470;&#127465; Indonesia</div><div class="dst-name">Bali</div><div class="dst-price">Packages from &#8377;65,999 / person</div><span class="dst-besttime">&#127780; Best: Apr - Oct</span><button class="dst-cta" onclick="openModal('bali')">Explore &#8594;</button></div></div>
+    <div class="dst-card rv d2"><img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=700&q=80" alt="Paris" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">&#127467;&#127479; France</div><div class="dst-name">Paris</div><div class="dst-price">Packages from &#8377;1,29,999 / person</div><span class="dst-besttime">&#127780; Best: Apr - Jun, Sep - Nov</span><button class="dst-cta" onclick="openModal('paris')">Explore &#8594;</button></div></div>
+    <div class="dst-card rv d3"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=700&q=80" alt="Dubai" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">&#127462;&#127466; UAE</div><div class="dst-name">Dubai</div><div class="dst-price">Packages from &#8377;45,999 / person</div><span class="dst-besttime">&#127780; Best: Nov - Mar</span><button class="dst-cta" onclick="openModal('dubai')">Explore &#8594;</button></div></div>
+    <!-- Row 2 -->
+    <div class="dst-card rv d4"><img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=700&q=80" alt="Maldives" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">&#127474;&#127485; Maldives</div><div class="dst-name">Maldives</div><div class="dst-price">Packages from &#8377;89,999 / person</div><span class="dst-besttime">&#127780; Best: Nov - Apr</span><button class="dst-cta" onclick="openModal('maldives')">Explore &#8594;</button></div></div>
+    <div class="dst-card rv d5"><img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=700&q=80" alt="Thailand" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">&#127481;&#127469; Thailand</div><div class="dst-name">Thailand</div><div class="dst-price">Packages from &#8377;52,999 / person</div><span class="dst-besttime">&#127780; Best: Nov - Feb</span><button class="dst-cta" onclick="openModal('thailand')">Explore &#8594;</button></div></div>
+    <div class="dst-card rv d6"><img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=700&q=80" alt="Santorini" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">&#127468;&#127479; Greece</div><div class="dst-name">Santorini</div><div class="dst-price">Packages from &#8377;1,45,999 / person</div><span class="dst-besttime">&#127780; Best: May - Oct</span><button class="dst-cta" onclick="openModal('santorini')">Explore &#8594;</button></div></div>
+    <!-- Row 3 -->
+    <div class="dst-card rv d1"><img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=700&q=80" alt="Kerala" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">&#127470;&#127475; India</div><div class="dst-name">Kerala</div><div class="dst-price">Packages from &#8377;28,999 / person</div><span class="dst-besttime">&#127780; Best: Sep - Mar</span><button class="dst-cta" onclick="openModal('kerala')">Explore &#8594;</button></div></div>
+    <div class="dst-card rv d2"><img src="https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=700&q=80" alt="Kashmir" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">&#127470;&#127475; India</div><div class="dst-name">Kashmir</div><div class="dst-price">Packages from &#8377;32,999 / person</div><span class="dst-besttime">&#127780; Best: Mar - Oct</span><button class="dst-cta" onclick="openModal('kashmir')">Explore &#8594;</button></div></div>
+    <div class="dst-card rv d3"><img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=700&q=80" alt="Rajasthan" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">&#127470;&#127475; India</div><div class="dst-name">Rajasthan</div><div class="dst-price">Packages from &#8377;35,999 / person</div><span class="dst-besttime">&#127780; Best: Oct - Mar</span><button class="dst-cta" onclick="openModal('rajasthan')">Explore &#8594;</button></div></div>
+    <!-- Row 4 -->
+    <div class="dst-card rv d4"><img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=700&q=80" alt="Golden Triangle" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">&#127470;&#127475; India</div><div class="dst-name">Golden Triangle</div><div class="dst-price">Packages from &#8377;25,999 / person</div><span class="dst-besttime">&#127780; Best: Oct - Mar</span><button class="dst-cta" onclick="openModal('goldentriangle')">Explore &#8594;</button></div></div>
+    <div class="dst-card rv d5"><img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=700&q=80" alt="Goa" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">&#127470;&#127475; India</div><div class="dst-name">Goa</div><div class="dst-price">Packages from &#8377;18,999 / person</div><span class="dst-besttime">&#127780; Best: Oct - Mar</span><button class="dst-cta" onclick="openModal('goa')">Explore &#8594;</button></div></div>
+    <div class="dst-card rv d6"><img src="https://images.unsplash.com/photo-1586612438666-ffd0ae97ad28?auto=format&fit=crop&w=700&q=80" alt="Andaman" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">&#127470;&#127475; India</div><div class="dst-name">Andaman Islands</div><div class="dst-price">Packages from &#8377;42,999 / person</div><span class="dst-besttime">&#127780; Best: Oct - May</span><button class="dst-cta" onclick="openModal('andaman')">Explore &#8594;</button></div></div>
+    <!-- Row 5 -->
+    <div class="dst-card rv d1"><img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=700&q=80" alt="Singapore" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">&#127480;&#127468; Singapore</div><div class="dst-name">Singapore</div><div class="dst-price">Packages from &#8377;55,999 / person</div><span class="dst-besttime">&#127780; Best: Feb - Apr</span><button class="dst-cta" onclick="openModal('singapore')">Explore &#8594;</button></div></div>
+    <div class="dst-card rv d2"><img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=700&q=80" alt="Japan" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">&#127471;&#127477; Japan</div><div class="dst-name">Japan</div><div class="dst-price">Packages from &#8377;1,85,999 / person</div><span class="dst-besttime">&#127780; Best: Mar - May, Oct - Nov</span><button class="dst-cta" onclick="openModal('japan')">Explore &#8594;</button></div></div>
+    <div class="dst-card rv d3"><img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=700&q=80" alt="Switzerland" loading="lazy"><div class="dst-ov"></div><div class="dst-info"><div class="dst-ctry">&#127464;&#127469; Switzerland</div><div class="dst-name">Switzerland</div><div class="dst-price">Packages from &#8377;1,95,999 / person</div><span class="dst-besttime">&#127780; Best: May - Sep, Dec - Mar</span><button class="dst-cta" onclick="openModal('switzerland')">Explore &#8594;</button></div></div>
   </div>
 </section>
 
@@ -490,9 +611,52 @@ footer{background:#040A16;padding:60px 60px 28px}
     <p class="s-sub rv d2">Real experiences from travellers who trusted Air Skylink with their journeys.</p>
   </div>
   <div class="tst-grid">
-    <div class="tst-card rv d1"><div class="qmark">"</div><div class="tst-stars">★★★★★</div><p class="tst-txt">Air Skylink handled everything so smoothly — from visa to hotel to flights. Jitendra sir personally ensured every detail was perfect. Best travel agency in Bhopal, no doubt!</p><div class="tst-person"><div class="tst-av">R</div><div><div class="tst-name">Rakesh Agarwal</div><div class="tst-loc">Bhopal · Dubai Package</div></div></div></div>
-    <div class="tst-card rv d2"><div class="qmark">"</div><div class="tst-stars">★★★★★</div><p class="tst-txt">Our Thailand group tour was absolutely incredible. The itinerary was perfectly planned and every local arrangement was seamless. Air Skylink truly goes above and beyond for their clients.</p><div class="tst-person"><div class="tst-av">S</div><div><div class="tst-name">Sunita & Family</div><div class="tst-loc">Bhopal · Thailand Group Tour</div></div></div></div>
-    <div class="tst-card rv d3"><div class="qmark">"</div><div class="tst-stars">★★★★★</div><p class="tst-txt">Our Maldives honeymoon was pure magic. The overwater villa, the private beach dinner — every moment was perfect. The team's aviation background really shows in how they manage logistics!</p><div class="tst-person"><div class="tst-av">V</div><div><div class="tst-name">Vikram & Priya Dubey</div><div class="tst-loc">Bhopal · Maldives Honeymoon</div></div></div></div>
+    <div class="tst-card rv d1"><div class="qmark">"</div><div class="tst-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="tst-txt">Air Skylink handled everything so smoothly &#8212; from visa to hotel to flights. Jitendra sir personally ensured every detail was perfect. Best travel agency in Bhopal, no doubt!</p><div class="tst-person"><div class="tst-av">R</div><div><div class="tst-name">Rakesh Agarwal</div><div class="tst-loc">Bhopal &#183; Dubai Package</div></div></div></div>
+    <div class="tst-card rv d2"><div class="qmark">"</div><div class="tst-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="tst-txt">Our Thailand group tour was absolutely incredible. The itinerary was perfectly planned and every local arrangement was seamless. Air Skylink truly goes above and beyond for their clients.</p><div class="tst-person"><div class="tst-av">S</div><div><div class="tst-name">Sunita &amp; Family</div><div class="tst-loc">Bhopal &#183; Thailand Group Tour</div></div></div></div>
+    <div class="tst-card rv d3"><div class="qmark">"</div><div class="tst-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="tst-txt">Our Maldives honeymoon was pure magic. The overwater villa, the private beach dinner &#8212; every moment was perfect. The team's aviation background really shows in how they manage logistics!</p><div class="tst-person"><div class="tst-av">V</div><div><div class="tst-name">Vikram &amp; Priya Dubey</div><div class="tst-loc">Bhopal &#183; Maldives Honeymoon</div></div></div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-hd">
+    <span class="s-eye rv">Got Questions?</span>
+    <h2 class="s-title rv d1" style="color:var(--charcoal)">Frequently Asked Questions</h2>
+    <p class="s-sub rv d2" style="margin:0 auto">Everything you need to know before booking your journey with Air Skylink.</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item rv d1">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>How do I book a tour package with Air Skylink Travels?</h4><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner">Simply fill out the enquiry form on our website, WhatsApp us at +91 9993237262, or call us directly. Our travel experts will get in touch within 24 hours to understand your preferences and craft a personalised itinerary for you.</div></div>
+    </div>
+    <div class="faq-item rv d2">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>Do you provide visa assistance for international destinations?</h4><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner">Yes, we provide complete visa assistance for all major international destinations including documentation guidance, application filing support, and appointment scheduling. Our team stays updated with the latest visa requirements and policies.</div></div>
+    </div>
+    <div class="faq-item rv d3">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>Can I customise my travel itinerary or are only fixed packages available?</h4><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner">Absolutely! We specialise in FIT (Fully Independent Travel) tours where every aspect of your itinerary can be customised &#8212; from hotels and flights to sightseeing and dining. Share your preferences and budget, and we'll design a bespoke journey just for you.</div></div>
+    </div>
+    <div class="faq-item rv d4">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>What payment options do you accept?</h4><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner">We accept all major payment methods including UPI, bank transfers (NEFT/IMPS), credit and debit cards, and cash at our Bhopal office. For international bookings, we also accept wire transfers. EMI options are available on select packages.</div></div>
+    </div>
+    <div class="faq-item rv d5">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>Is travel insurance included in the packages?</h4><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner">Travel insurance is available as an add-on with all our packages. We highly recommend securing comprehensive travel insurance that covers medical emergencies, trip cancellations, and baggage loss. Our team will help you choose the best coverage for your destination.</div></div>
+    </div>
+    <div class="faq-item rv d6">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>What is your cancellation and refund policy?</h4><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner">Cancellation policies vary by destination and season. Generally, cancellations made 30+ days before departure receive a full refund minus processing fees. Cancellations within 15-30 days receive a partial refund. We always try to be flexible and offer rescheduling options whenever possible. Specific policy details are shared with each booking confirmation.</div></div>
+    </div>
+    <div class="faq-item rv d1">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>Do you arrange group tours for corporates and large families?</h4><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner">Yes! We specialise in corporate travel and MICE (Meetings, Incentives, Conferences &amp; Exhibitions) as well as large family group tours. We handle everything from flight blocks and hotel reservations to local transport, venue bookings, and customised sightseeing for groups of any size.</div></div>
+    </div>
+    <div class="faq-item rv d2">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>Are your packages suitable for senior citizens and children?</h4><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner">Absolutely. We design age-appropriate itineraries with comfortable pacing, accessible accommodations, and necessary medical assistance. Senior citizen discounts are available on select packages, and we ensure child-friendly activities and safety measures for family trips.</div></div>
+    </div>
   </div>
 </section>
 
@@ -503,15 +667,30 @@ footer{background:#040A16;padding:60px 60px 28px}
       <span class="s-eye rv">Get in Touch</span>
       <h2 class="s-title rv d1" style="color:#fff">Ready to Plan<br>Your Journey?</h2>
       <p class="ci-tag rv d2">Fill in your details and our travel experts will reach out within 24 hours to craft your perfect trip.</p>
-      <div class="ci-row rv d3"><div class="ci-icon">📍</div><div><h4>Office</h4><p>GB-11, A-Block, Mansarovar Complex,<br>Bhopal – 462016, Madhya Pradesh</p></div></div>
-      <div class="ci-row rv d4"><div class="ci-icon">📞</div><div><h4>Phone / WhatsApp</h4><p><a href="tel:+919993237262">+91 9993237262</a></p></div></div>
-      <div class="ci-row rv d5"><div class="ci-icon">✉️</div><div><h4>Email</h4><p><a href="mailto:airakylink@gmail.com">airakylink@gmail.com</a></p></div></div>
+      <div class="ci-row rv d3"><div class="ci-icon">&#128205;</div><div><h4>Office</h4><p>GB-11, A-Block, Mansarovar Complex,<br>Bhopal &#8211; 462016, Madhya Pradesh</p></div></div>
+      <div class="ci-row rv d4"><div class="ci-icon">&#128222;</div><div><h4>Phone / WhatsApp</h4><p><a href="tel:+919993237262">+91 99932 37262</a></p></div></div>
+      <div class="ci-row rv d5"><div class="ci-icon">&#9993;</div><div><h4>Email</h4><p><a href="mailto:airakylink@gmail.com">airakylink@gmail.com</a></p></div></div>
       <div class="ci-socials rv d6">
-        <a class="soc" href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-        <a class="soc" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-        <a class="soc" href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-        <a class="soc" href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0D1B3E"/></svg></a>
-        <a class="soc" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <!-- Facebook -->
+        <a class="soc soc-fb" href="#" aria-label="Facebook" title="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a class="soc soc-ig" href="#" aria-label="Instagram" title="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <!-- X (Twitter) -->
+        <a class="soc soc-x" href="#" aria-label="X" title="X (Twitter)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <!-- YouTube -->
+        <a class="soc soc-yt" href="#" aria-label="YouTube" title="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <!-- LinkedIn -->
+        <a class="soc soc-li" href="#" aria-label="LinkedIn" title="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
       </div>
       <div class="map-wrap rv d6">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.0!2d77.4126!3d23.2099!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c428f8fd68fbd%3A0x2155716d572be4ab!2sMansarovar%20Complex%2C%20Bhopal%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
@@ -527,9 +706,21 @@ footer{background:#040A16;padding:60px 60px 28px}
         <label>Destination</label>
         <select id="f-dest">
           <option value="">Select destination</option>
-          <option>Bali, Indonesia</option><option>Paris, France</option>
-          <option>Dubai, UAE</option><option>Maldives</option>
-          <option>Thailand</option><option>Santorini, Greece</option>
+          <option>Bali, Indonesia</option>
+          <option>Paris, France</option>
+          <option>Dubai, UAE</option>
+          <option>Maldives</option>
+          <option>Thailand</option>
+          <option>Santorini, Greece</option>
+          <option>Kerala, India</option>
+          <option>Kashmir, India</option>
+          <option>Rajasthan, India</option>
+          <option>Golden Triangle, India</option>
+          <option>Goa, India</option>
+          <option>Andaman Islands, India</option>
+          <option>Singapore</option>
+          <option>Japan</option>
+          <option>Switzerland</option>
           <option>Other / Not decided yet</option>
         </select>
       </div>
@@ -546,27 +737,39 @@ footer{background:#040A16;padding:60px 60px 28px}
           <option>Corporate / MICE</option>
         </select>
       </div>
-      <div class="fg"><label>Message</label><textarea id="f-msg" placeholder="Tell us about your dream trip — budget, preferences, special requirements..."></textarea></div>
-      <button class="cf-submit" onclick="submitForm(this)">Send Enquiry ✈</button>
+      <div class="fg"><label>Message</label><textarea id="f-msg" placeholder="Tell us about your dream trip &#8212; budget, preferences, special requirements..."></textarea></div>
+      <button class="cf-submit" onclick="submitForm(this)">Send Enquiry &#9992;</button>
     </div>
   </div>
 </section>
 
-<!-- DESTINATION MODAL -->
+<!-- DESTINATION MODAL - PHOTO SLIDESHOW -->
 <div id="dst-modal" onclick="modalBgClick(event)">
   <div class="modal-box">
-    <button class="modal-close-btn" onclick="closeModal()">✕</button>
-    <div class="modal-vid-wrap" id="mvw">
-      <video id="mvid" muted loop playsinline preload="none"><source id="msrc" src="" type="video/mp4"></video>
-      <div class="modal-play-ind" id="mpind">▶</div>
-      <div class="modal-vid-overlay"><div class="modal-vid-ctry" id="mctry"></div><div class="modal-vid-name" id="mname"></div></div>
+    <button class="modal-close-btn" onclick="closeModal()">&#10005;</button>
+    <div class="slideshow-wrap" id="ssWrap">
+      <div class="slideshow-slide active" id="ssSlide0"><img src="" alt="" id="ssImg0"></div>
+      <div class="slideshow-slide" id="ssSlide1"><img src="" alt="" id="ssImg1"></div>
+      <div class="slideshow-slide" id="ssSlide2"><img src="" alt="" id="ssImg2"></div>
+      <div class="slideshow-dots" id="ssDots"></div>
+      <div class="slideshow-progress" id="ssProg"></div>
+      <div class="slideshow-counter" id="ssCounter">1 / 3</div>
+      <div class="slideshow-overlay">
+        <div class="slideshow-ctry" id="mctry"></div>
+        <div class="slideshow-name" id="mname"></div>
+      </div>
     </div>
     <div class="modal-body">
       <p class="modal-desc" id="mdesc"></p>
       <div class="modal-hls" id="mhls"></div>
       <div class="modal-ft">
-        <div><span class="modal-price-lbl">Starting from</span><span class="modal-price-val" id="mprice"></span><span class="modal-dur" id="mdur"></span></div>
-        <button class="modal-book" onclick="bookNow()">Enquire Now →</button>
+        <div>
+          <span class="modal-price-lbl">Starting from</span>
+          <span class="modal-price-val" id="mprice"></span>
+          <span class="modal-dur" id="mdur"></span>
+          <span class="modal-besttime" id="mbest"></span>
+        </div>
+        <button class="modal-book" onclick="bookNow()">Enquire Now &#8594;</button>
       </div>
     </div>
   </div>
@@ -576,15 +779,17 @@ footer{background:#040A16;padding:60px 60px 28px}
 <footer>
   <div class="ft-top">
     <div>
-      <div class="ft-logo-wrap"><img src="data:image/jpeg;base64,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" alt="Air Skylink Travels" style="height:34px;width:auto"></div>
-      <p class="ft-tag">Your link to the World — crafting extraordinary journeys since 2009 with aviation expertise and a passion for exploration.</p>
+      <div class="ft-logo-wrap">
+        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=200&q=80" alt="Air Skylink Travels" style="height:36px;width:auto;border-radius:4px;">
+      </div>
+      <p class="ft-tag">Your link to the World &#8212; crafting extraordinary journeys since 2009 with aviation expertise and a passion for exploration.</p>
     </div>
-    <div class="ft-col"><h4>Quick Links</h4><ul class="ft-links"><li><a href="#about">About Us</a></li><li><a href="#services">Services</a></li><li><a href="#destinations">Destinations</a></li><li><a href="#why">Why Us</a></li><li><a href="#contact">Contact</a></li></ul></div>
-    <div class="ft-col"><h4>Services</h4><ul class="ft-links"><li><a href="#">FIT Tours</a></li><li><a href="#">Group Tours</a></li><li><a href="#">Corporate Travel</a></li><li><a href="#">MICE Events</a></li><li><a href="#">Honeymoon Packages</a></li></ul></div>
+    <div class="ft-col"><h4>Quick Links</h4><ul class="ft-links"><li><a href="#about">About Us</a></li><li><a href="#services">Services</a></li><li><a href="#destinations">Destinations</a></li><li><a href="#why">Why Us</a></li><li><a href="#contact">Contact</a></li><li><a href="#faq">FAQs</a></li></ul></div>
+    <div class="ft-col"><h4>Services</h4><ul class="ft-links"><li><a href="#services">FIT Tours</a></li><li><a href="#services">Group Tours</a></li><li><a href="#services">Corporate Travel</a></li><li><a href="#services">MICE Events</a></li><li><a href="#destinations">Honeymoon Packages</a></li></ul></div>
   </div>
   <div class="ft-bot">
-    <p class="ft-copy">© 2025 Air Skylink Travels · Founded by Jitendra Parihar · Bhopal, MP</p>
-    <div class="ft-blinks"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="admin.html" style="color:rgba(255,255,255,.15);font-size:.72rem">Admin</a></div>
+    <p class="ft-copy">&#169; 2025 Air Skylink Travels &#183; Founded by Jitendra Parihar &#183; Bhopal, MP</p>
+    <div class="ft-blinks"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
   </div>
 </footer>
 
@@ -592,7 +797,7 @@ footer{background:#040A16;padding:60px 60px 28px}
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
 <script>
-// FIREBASE CONFIG — Replace with your project values
+// FIREBASE CONFIG
 const FB_CONFIG={
   apiKey:"YOUR_API_KEY",
   authDomain:"YOUR_PROJECT.firebaseapp.com",
@@ -638,6 +843,16 @@ function countUp(el){
     if(p<1)requestAnimationFrame(tick);else el.textContent=(tgt>=1000?tgt.toLocaleString("en-IN"):tgt)+sfx;
   }requestAnimationFrame(tick);
 }
+// BACK TO TOP
+const btt=document.getElementById("backToTop");
+window.addEventListener("scroll",()=>{btt.classList.toggle("show",window.scrollY>600)},{passive:true});
+// FAQ
+function toggleFaq(q){
+  const item=q.parentElement,ans=item.querySelector(".faq-a"),inner=ans.querySelector(".faq-a-inner");
+  const isOpen=item.classList.contains("open");
+  document.querySelectorAll(".faq-item.open").forEach(i=>{i.classList.remove("open");i.querySelector(".faq-a").style.maxHeight="0"});
+  if(!isOpen){item.classList.add("open");ans.style.maxHeight=inner.scrollHeight+"px"}
+}
 // FORM
 function showToast(msg){const t=document.getElementById("toast");t.textContent=msg;t.style.opacity="1";t.style.transform="translateY(0)";setTimeout(()=>{t.style.opacity="0";t.style.transform="translateY(20px)"},4000)}
 async function submitForm(btn){
@@ -649,49 +864,308 @@ async function submitForm(btn){
   const pax=document.getElementById("f-pax")?.value.trim();
   const type=document.getElementById("f-type")?.value;
   const msg=document.getElementById("f-msg")?.value.trim();
-  if(!name||!phone){showToast("⚠ Please fill Name & Phone.");return;}
+  if(!name||!phone){showToast("Please fill Name & Phone.");return;}
   btn.textContent="Sending...";btn.disabled=true;
   const data={name,phone,email,destination:dest,travelMonth:month,travellers:pax,tripType:type,message:msg,status:"new",createdAt:firebase?.firestore?.FieldValue?.serverTimestamp()||new Date().toISOString()};
   try{
     if(db){await db.collection("inquiries").add(data);}
-    btn.textContent="✓ Sent!";btn.style.background="#10B981";
-    showToast("✓ Enquiry sent! We'll contact you within 24 hours.");
+    btn.textContent="Sent!";btn.style.background="#10B981";
+    showToast("Enquiry sent! We'll contact you within 24 hours.");
     [document.getElementById("f-name"),document.getElementById("f-phone"),document.getElementById("f-email"),document.getElementById("f-msg")].forEach(el=>{if(el)el.value=""});
     if(document.getElementById("f-dest"))document.getElementById("f-dest").selectedIndex=0;
     if(document.getElementById("f-type"))document.getElementById("f-type").selectedIndex=0;
-  }catch(e){console.error(e);btn.textContent="✓ Sent!";btn.style.background="#10B981";showToast("✓ Enquiry received! We'll be in touch soon.");}
-  setTimeout(()=>{btn.textContent="Send Enquiry ✈";btn.style.background="";btn.disabled=false},3500);
+  }catch(e){console.error(e);btn.textContent="Sent!";btn.style.background="#10B981";showToast("Enquiry received! We'll be in touch soon.");}
+  setTimeout(()=>{btn.textContent="Send Enquiry";btn.style.background="";btn.disabled=false},3500);
 }
 // ACTIVE NAV
 const secs=document.querySelectorAll("section[id]"),navAs=document.querySelectorAll(".nav-links a");
 window.addEventListener("scroll",()=>{let cur="";secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id});navAs.forEach(a=>{if(!a.classList.contains("nav-book"))a.style.color=a.getAttribute("href")===`#${cur}`?"var(--red)":""})},{passive:true});
-// DESTINATIONS DATA
+
+// ==================== DESTINATION DATA WITH PHOTO SLIDESHOWS ====================
 const DESTS={
-  bali:{name:"Bali",ctry:"🇮🇩 Indonesia",desc:"Bali is a paradise of emerald rice terraces, ancient Hindu temples, and crystal-clear waters. From the spiritual heart of Ubud to the surf beaches of Seminyak, Bali weaves culture, nature, and luxury into one unforgettable island experience.",highlights:["Ancient temples & Kecak ceremonies","UNESCO Tegalalang rice terraces","World-class surf, dive & snorkel spots","Luxurious private pool villas & spas"],price:"₹65,999",dur:"5 Nights / 6 Days",video:"https://videos.pexels.com/video-files/3126484/3126484-hd_1920_1080_25fps.mp4",poster:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80"},
-  paris:{name:"Paris",ctry:"🇫🇷 France",desc:"Paris — the City of Light — dazzles with iconic landmarks, world-class museums, and an unparalleled culinary scene. Stroll along the Seine, marvel at the Eiffel Tower at golden hour, and lose yourself in the charming alleyways of Montmartre.",highlights:["Eiffel Tower & Seine river cruise","Louvre Museum & Palace of Versailles","Michelin-starred dining experiences","Shopping on the Champs-Élysées"],price:"₹1,29,999",dur:"6 Nights / 7 Days",video:"https://videos.pexels.com/video-files/7206450/7206450-hd_1920_1080_25fps.mp4",poster:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80"},
-  dubai:{name:"Dubai",ctry:"🇦🇪 UAE",desc:"Dubai is where the future meets the desert — a city of towering skyscrapers, golden dunes, and unparalleled luxury. Experience the world's tallest building, lavish malls, and serene desert safaris under a breathtaking starlit sky.",highlights:["Burj Khalifa & Dubai Frame sky views","Desert safari & thrilling dune bashing","Dubai Mall, Gold & Spice Souks","Luxury dinner on a traditional dhow cruise"],price:"₹45,999",dur:"4 Nights / 5 Days",video:"https://videos.pexels.com/video-files/31257754/31257754-hd_1920_1080_25fps.mp4",poster:"https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80"},
-  maldives:{name:"Maldives",ctry:"🇲🇻 Maldives",desc:"The Maldives is the ultimate island escape — a necklace of coral atolls cradling impossibly blue lagoons. Stay in iconic overwater bungalows, snorkel with manta rays, and witness the most breathtaking sunsets you will ever see.",highlights:["Overwater villa with private infinity pool","Snorkelling & diving in coral reefs","Sunset dolphin & whale shark cruises","Private beach candlelight dining"],price:"₹89,999",dur:"4 Nights / 5 Days",video:"https://videos.pexels.com/video-files/4069480/4069480-hd_1920_1080_25fps.mp4",poster:"https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1200&q=80"},
-  thailand:{name:"Thailand",ctry:"🇹🇭 Thailand",desc:"Thailand enchants with golden temples, emerald jungles, and some of the world's most beautiful islands. From Bangkok's buzzing streets to the tranquil coves of Krabi, it delivers the perfect blend of culture, adventure, and relaxation.",highlights:["Grand Palace & Wat Pho in Bangkok","Phi Phi Islands & Railay Beach","Ethical elephant sanctuary experiences","Street food tours & Thai cooking classes"],price:"₹52,999",dur:"5 Nights / 6 Days",video:"https://videos.pexels.com/video-files/4133023/4133023-uhd_2560_1440_30fps.mp4",poster:"https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1200&q=80"},
-  santorini:{name:"Santorini",ctry:"🇬🇷 Greece",desc:"Santorini rises dramatically from the Aegean Sea — a crescent of volcanic rock crowned with dazzling white villages and iconic blue-domed churches. Watch the legendary Oia sunset, sail around the caldera, and sip local wine above the sea.",highlights:["Iconic Oia sunset & caldera views","Akrotiri Bronze Age archaeological site","Wine tasting at volcanic-soil vineyards","Boat cruise around the volcanic islands"],price:"₹1,45,999",dur:"5 Nights / 6 Days",video:"https://videos.pexels.com/video-files/6192496/6192496-hd_1920_1080_25fps.mp4",poster:"https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=80"}
+  bali:{
+    name:"Bali",
+    ctry:"&#127470;&#127465; Indonesia",
+    desc:"Bali is a paradise of emerald rice terraces, ancient Hindu temples, and crystal-clear waters. From the spiritual heart of Ubud to the surf beaches of Seminyak, Bali weaves culture, nature, and luxury into one unforgettable island experience.",
+    highlights:["Ancient temples & Kecak dance ceremonies","UNESCO Tegalalang rice terraces","World-class surf, dive & snorkel spots","Luxurious private pool villas & spas"],
+    price:"&#8377;65,999",
+    dur:"5 Nights / 6 Days",
+    besttime:"Best Time: April - October",
+    images:[
+      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1555400038-63f5ba517a47?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?auto=format&fit=crop&w=1200&q=80"
+    ]
+  },
+  paris:{
+    name:"Paris",
+    ctry:"&#127467;&#127479; France",
+    desc:"Paris &#8212; the City of Light &#8212; dazzles with iconic landmarks, world-class museums, and an unparalleled culinary scene. Stroll along the Seine, marvel at the Eiffel Tower at golden hour, and lose yourself in the charming alleyways of Montmartre.",
+    highlights:["Eiffel Tower & Seine river cruise","Louvre Museum & Palace of Versailles","Michelin-starred dining experiences","Shopping on the Champs-&#201;lys&#233;es"],
+    price:"&#8377;1,29,999",
+    dur:"6 Nights / 7 Days",
+    besttime:"Best Time: April - June, September - November",
+    images:[
+      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1509439581779-6298f75bf6e5?auto=format&fit=crop&w=1200&q=80"
+    ]
+  },
+  dubai:{
+    name:"Dubai",
+    ctry:"&#127462;&#127466; UAE",
+    desc:"Dubai is where the future meets the desert &#8212; a city of towering skyscrapers, golden dunes, and unparalleled luxury. Experience the world's tallest building, lavish malls, and serene desert safaris under a breathtaking starlit sky.",
+    highlights:["Burj Khalifa & Dubai Frame sky views","Desert safari & thrilling dune bashing","Dubai Mall, Gold & Spice Souks","Luxury dinner on a traditional dhow cruise"],
+    price:"&#8377;45,999",
+    dur:"4 Nights / 5 Days",
+    besttime:"Best Time: November - March",
+    images:[
+      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?auto=format&fit=crop&w=1200&q=80"
+    ]
+  },
+  maldives:{
+    name:"Maldives",
+    ctry:"&#127474;&#127485; Maldives",
+    desc:"The Maldives is the ultimate island escape &#8212; a necklace of coral atolls cradling impossibly blue lagoons. Stay in iconic overwater bungalows, snorkel with manta rays, and witness the most breathtaking sunsets you will ever see.",
+    highlights:["Overwater villa with private infinity pool","Snorkelling & diving in coral reefs","Sunset dolphin & whale shark cruises","Private beach candlelight dining"],
+    price:"&#8377;89,999",
+    dur:"4 Nights / 5 Days",
+    besttime:"Best Time: November - April",
+    images:[
+      "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1510391532992-e1b94a8a4c7e?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1200&q=80"
+    ]
+  },
+  thailand:{
+    name:"Thailand",
+    ctry:"&#127481;&#127469; Thailand",
+    desc:"Thailand enchants with golden temples, emerald jungles, and some of the world's most beautiful islands. From Bangkok's buzzing streets to the tranquil coves of Krabi, it delivers the perfect blend of culture, adventure, and relaxation.",
+    highlights:["Grand Palace & Wat Pho in Bangkok","Phi Phi Islands & Railay Beach","Ethical elephant sanctuary experiences","Street food tours & Thai cooking classes"],
+    price:"&#8377;52,999",
+    dur:"5 Nights / 6 Days",
+    besttime:"Best Time: November - February",
+    images:[
+      "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?auto=format&fit=crop&w=1200&q=80"
+    ]
+  },
+  santorini:{
+    name:"Santorini",
+    ctry:"&#127468;&#127479; Greece",
+    desc:"Santorini rises dramatically from the Aegean Sea &#8212; a crescent of volcanic rock crowned with dazzling white villages and iconic blue-domed churches. Watch the legendary Oia sunset, sail around the caldera, and sip local wine above the sea.",
+    highlights:["Iconic Oia sunset & caldera views","Akrotiri Bronze Age archaeological site","Wine tasting at volcanic-soil vineyards","Boat cruise around the volcanic islands"],
+    price:"&#8377;1,45,999",
+    dur:"5 Nights / 6 Days",
+    besttime:"Best Time: May - October",
+    images:[
+      "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1601581875309-fafbf2d3ed1a?auto=format&fit=crop&w=1200&q=80"
+    ]
+  },
+  // INDIA TOURS
+  kerala:{
+    name:"Kerala",
+    ctry:"&#127470;&#127475; India",
+    desc:"Kerala, 'God's Own Country,' is a tapestry of emerald backwaters, misty tea plantations, and palm-fringed beaches. Cruise the Alleppey backwaters on a traditional houseboat, witness Kathakali performances, and rejuvenate with authentic Ayurvedic treatments.",
+    highlights:["Alleppey backwater houseboat cruise","Munnar tea plantation visits","Periyar Wildlife Sanctuary safari","Kovalam beach & Ayurvedic spa retreats"],
+    price:"&#8377;28,999",
+    dur:"5 Nights / 6 Days",
+    besttime:"Best Time: September - March",
+    images:[
+      "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1580835128180-d14b0608a05d?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=1200&q=80"
+    ]
+  },
+  kashmir:{
+    name:"Kashmir",
+    ctry:"&#127470;&#127475; India",
+    desc:"Kashmir &#8212; truly a paradise on Earth &#8212; mesmerises with snow-capped Himalayas, pristine Dal Lake, and Mughal gardens. Experience a shikara ride at sunrise, stay in a charming houseboat, and stroll through meadows of vibrant wildflowers in Gulmarg.",
+    highlights:["Shikara ride on Dal Lake at sunrise","Gulmarg gondola & Pahalgam meadows","Stay in a traditional houseboat","Mughal Gardens & Shankaracharya Temple"],
+    price:"&#8377;32,999",
+    dur:"5 Nights / 6 Days",
+    besttime:"Best Time: March - October",
+    images:[
+      "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1562602727-02e63c10059e?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&q=80"
+    ]
+  },
+  rajasthan:{
+    name:"Rajasthan",
+    ctry:"&#127470;&#127475; India",
+    desc:"Rajasthan is the land of kings &#8212; a majestic realm of golden forts, royal palaces, and vibrant bazaars. Explore the Pink City of Jaipur, the blue lanes of Jodhpur, and the golden dunes of Jaisalmer while experiencing royal hospitality at heritage hotels.",
+    highlights:["Amber Fort & City Palace, Jaipur","Jaisalmer desert camp & camel safari","Udaipur Lake Pichola boat ride","Jodhpur Mehrangarh Fort & blue city walk"],
+    price:"&#8377;35,999",
+    dur:"6 Nights / 7 Days",
+    besttime:"Best Time: October - March",
+    images:[
+      "https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80"
+    ]
+  },
+  goldentriangle:{
+    name:"Golden Triangle",
+    ctry:"&#127470;&#127475; India",
+    desc:"India's classic circuit connects Delhi, Agra, and Jaipur &#8212; a journey through the country's most iconic monuments. Stand in awe of the Taj Mahal at sunrise, explore the bustling lanes of Old Delhi, and marvel at Jaipur's royal architecture.",
+    highlights:["Taj Mahal sunrise visit, Agra","Red Fort & Qutub Minar, Delhi","Amber Fort & Hawa Mahal, Jaipur","Rickshaw ride through Chandni Chowk"],
+    price:"&#8377;25,999",
+    dur:"5 Nights / 6 Days",
+    besttime:"Best Time: October - March",
+    images:[
+      "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=1200&q=80"
+    ]
+  },
+  goa:{
+    name:"Goa",
+    ctry:"&#127470;&#127475; India",
+    desc:"Goa is where India meets the beach &#8212; a laid-back paradise of golden sands, Portuguese heritage, and vibrant nightlife. From the bustling beaches of North Goa to the serene shores of Palolem, every corner offers a unique flavour of sun, sea, and celebration.",
+    highlights:["Basilica of Bom Jesus & Old Goa churches","Dudhsagar Falls jungle trek","North Goa beach hopping & water sports","South Goa sunset at Palolem beach"],
+    price:"&#8377;18,999",
+    dur:"4 Nights / 5 Days",
+    besttime:"Best Time: October - March",
+    images:[
+      "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1595658658481-d53d3f999875?auto=format&fit=crop&w=1200&q=80"
+    ]
+  },
+  andaman:{
+    name:"Andaman Islands",
+    ctry:"&#127470;&#127475; India",
+    desc:"The Andaman Islands are India's best-kept secret &#8212; pristine beaches, crystal-clear waters, and vibrant coral reefs await. From the historic Cellular Jail in Port Blair to the turquoise lagoons of Havelock Island, this is tropical paradise without the passport hassle.",
+    highlights:["Radhanagar Beach &#8211; Asia's best beach","Cellular Jail light & sound show","Havelock Island scuba diving & snorkelling","Neil Island natural rock formations"],
+    price:"&#8377;42,999",
+    dur:"5 Nights / 6 Days",
+    besttime:"Best Time: October - May",
+    images:[
+      "https://images.unsplash.com/photo-1586612438666-ffd0ae97ad28?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1559628233-eb1b1ee29747?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?auto=format&fit=crop&w=1200&q=80"
+    ]
+  },
+  // INTERNATIONAL
+  singapore:{
+    name:"Singapore",
+    ctry:"&#127480;&#127468; Singapore",
+    desc:"Singapore is a dazzling fusion of cultures, cuisines, and cutting-edge architecture. From the futuristic Gardens by the Bay and Marina Bay Sands to the vibrant streets of Chinatown and Little India, every moment is an adventure in this garden city.",
+    highlights:["Gardens by the Bay & Supertree Grove","Sentosa Island & Universal Studios","Marina Bay Sands SkyPark observation deck","Night safari at Singapore Zoo"],
+    price:"&#8377;55,999",
+    dur:"4 Nights / 5 Days",
+    besttime:"Best Time: February - April",
+    images:[
+      "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1495344517868-8ebaf0a2044a?auto=format&fit=crop&w=1200&q=80"
+    ]
+  },
+  japan:{
+    name:"Japan",
+    ctry:"&#127471;&#127477; Japan",
+    desc:"Japan is a captivating blend of ancient tradition and cutting-edge modernity. Witness the ethereal beauty of cherry blossom season, explore centuries-old temples in Kyoto, experience the electric energy of Tokyo, and soak in natural onsen hot springs.",
+    highlights:["Mount Fuji & Hakone hot springs","Fushimi Inari shrine & Arashiyama bamboo","Tokyo Shibuya crossing & Akihabara","Traditional tea ceremony & geisha district"],
+    price:"&#8377;1,85,999",
+    dur:"7 Nights / 8 Days",
+    besttime:"Best Time: March - May, October - November",
+    images:[
+      "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1480796927426-f609979314bd?auto=format&fit=crop&w=1200&q=80"
+    ]
+  },
+  switzerland:{
+    name:"Switzerland",
+    ctry:"&#127464;&#127469; Switzerland",
+    desc:"Switzerland is the quintessential Alpine dream &#8212; snow-capped peaks, pristine lakes, and charming chocolate-box villages. Ride the Glacier Express, explore Lucerne's medieval old town, and experience world-class skiing in Zermatt beneath the iconic Matterhorn.",
+    highlights:["Glacier Express scenic train journey","Jungfraujoch &#8211; Top of Europe","Zermatt & the iconic Matterhorn view","Lake Geneva & Chillon Castle"],
+    price:"&#8377;1,95,999",
+    dur:"6 Nights / 7 Days",
+    besttime:"Best Time: May - September, December - March",
+    images:[
+      "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1527668752968-14dc70a27c95?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80"
+    ]
+  }
 };
-// MODAL
-const modal=document.getElementById("dst-modal"),mvid=document.getElementById("mvid"),msrc=document.getElementById("msrc"),mvw=document.getElementById("mvw"),mpind=document.getElementById("mpind");
-function openModal(k){const d=DESTS[k];if(!d)return;
-  document.getElementById("mctry").textContent=d.ctry;document.getElementById("mname").textContent=d.name;
-  document.getElementById("mdesc").textContent=d.desc;document.getElementById("mprice").textContent=d.price;document.getElementById("mdur").textContent=d.dur;
+
+// ==================== SLIDESHOW SYSTEM ====================
+let ssTimer=null,ssProgTimer=null,curSlide=0,totalSlides=3,currentDest=null;
+const SS_INTERVAL=2000; // 2 seconds per slide
+
+function openModal(k){
+  const d=DESTS[k];if(!d)return;currentDest=k;
+  document.getElementById("mctry").innerHTML=d.ctry;
+  document.getElementById("mname").textContent=d.name;
+  document.getElementById("mdesc").innerHTML=d.desc;
+  document.getElementById("mprice").innerHTML=d.price;
+  document.getElementById("mdur").textContent=d.dur;
+  document.getElementById("mbest").textContent=d.besttime;
   document.getElementById("mhls").innerHTML=d.highlights.map(h=>`<div class="modal-hl"><div class="modal-hl-dot"></div>${h}</div>`).join("");
-  mvw.classList.remove("playing");mvid.poster=d.poster;msrc.src=d.video;mvid.load();
-  modal.classList.add("open");document.body.style.overflow="hidden";
-  setTimeout(()=>{mvid.play().then(()=>mvw.classList.add("playing")).catch(()=>{})},300);
+  // Setup slideshow images
+  for(let i=0;i<3;i++){
+    const img=document.getElementById("ssImg"+i);
+    img.src=d.images[i];img.alt=d.name+" photo "+(i+1);
+  }
+  // Reset slideshow
+  curSlide=0;
+  for(let i=0;i<3;i++){document.getElementById("ssSlide"+i).classList.toggle("active",i===0)}
+  // Create dots
+  document.getElementById("ssDots").innerHTML=d.images.map((_,i)=>`<div class="slideshow-dot ${i===0?'active':''}" onclick="goToSlide(${i})"></div>`).join("");
+  document.getElementById("ssCounter").textContent=`1 / ${totalSlides}`;
+  document.getElementById("ssProg").style.width="0%";
+  // Show modal
+  document.getElementById("dst-modal").classList.add("open");
+  document.body.style.overflow="hidden";
+  // Start auto-play
+  startSlideshow();
 }
-function closeModal(){modal.classList.remove("open");document.body.style.overflow="";mvid.pause();mvid.currentTime=0;msrc.src="";mvw.classList.remove("playing")}
-function modalBgClick(e){if(e.target===modal)closeModal()}
+
+function startSlideshow(){
+  stopSlideshow();
+  let prog=0;
+  const progEl=document.getElementById("ssProg");
+  ssProgTimer=setInterval(()=>{prog+=2;progEl.style.width=prog+"%"},SS_INTERVAL/50);
+  ssTimer=setInterval(()=>{nextSlide()},SS_INTERVAL);
+}
+function stopSlideshow(){
+  if(ssTimer){clearInterval(ssTimer);ssTimer=null}
+  if(ssProgTimer){clearInterval(ssProgTimer);ssProgTimer=null}
+}
+function nextSlide(){
+  goToSlide((curSlide+1)%totalSlides);
+}
+function goToSlide(idx){
+  curSlide=idx;
+  for(let i=0;i<3;i++){document.getElementById("ssSlide"+i).classList.toggle("active",i===idx)}
+  const dots=document.querySelectorAll(".slideshow-dot");
+  dots.forEach((d,i)=>d.classList.toggle("active",i===idx));
+  document.getElementById("ssCounter").textContent=`${idx+1} / ${totalSlides}`;
+  document.getElementById("ssProg").style.width="0%";
+  // Restart timer
+  stopSlideshow();startSlideshow();
+}
+function closeModal(){
+  stopSlideshow();
+  document.getElementById("dst-modal").classList.remove("open");
+  document.body.style.overflow="";
+  currentDest=null;
+}
+function modalBgClick(e){if(e.target===document.getElementById("dst-modal"))closeModal()}
 function bookNow(){closeModal();document.getElementById("contact").scrollIntoView({behavior:"smooth"})}
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
 </script>
 
 <!-- TOAST -->
-<div id="toast" style="position:fixed;bottom:90px;left:24px;z-index:9990;background:#10B981;color:#fff;padding:14px 22px;border-radius:8px;font-size:.88rem;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.3);opacity:0;transform:translateY(20px);transition:all .4s ease;pointer-events:none;max-width:280px;line-height:1.5">✓ Enquiry sent! We'll contact you within 24 hours.</div>
+<div id="toast" style="position:fixed;bottom:90px;left:24px;z-index:9990;background:#10B981;color:#fff;padding:14px 22px;border-radius:8px;font-size:.88rem;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.3);opacity:0;transform:translateY(20px);transition:all .4s ease;pointer-events:none;max-width:280px;line-height:1.5">Enquiry sent! We'll contact you within 24 hours.</div>
 
 </body>
 </html>
