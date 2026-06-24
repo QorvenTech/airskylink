@@ -293,7 +293,7 @@ a{text-decoration:none}
 .modal-book:hover{background:var(--red-lt);transform:translateY(-2px);box-shadow:0 8px 20px rgba(212,43,58,.35)}
 
 /* SCROLL TO TOP */
-#stt{position:fixed;bottom:90px;right:24px;z-index:8000;width:46px;height:46px;border-radius:50%;background:var(--red);color:#fff;border:none;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 18px rgba(212,43,58,.4);opacity:0;transform:translateY(10px);transition:all .35s ease;display:flex;align-items:center;justify-content:center;line-height:1}
+#stt{position:fixed;bottom:24px;right:24px;z-index:8000;width:46px;height:46px;border-radius:50%;background:var(--red);color:#fff;border:none;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 18px rgba(212,43,58,.4);opacity:0;transform:translateY(10px);transition:all .35s ease;display:flex;align-items:center;justify-content:center;line-height:1}
 #stt.vis{opacity:1;transform:translateY(0)}
 #stt:hover{background:var(--red-lt);transform:translateY(-2px)!important}
 
@@ -352,21 +352,34 @@ footer{background:#040A16;padding:60px 60px 28px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
-/* MONTH PICKER */
+/* DATE PICKER */
 .mp-wrap{position:relative}
 .mp-input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:6px;padding:11px 14px;color:#fff;font-size:.9rem;font-family:"Inter",sans-serif;outline:none;cursor:pointer;text-align:left;transition:border-color .3s;caret-color:transparent}
-.mp-input:focus,.mp-input.open{border-color:rgba(212,43,58,.55)}
-.mp-input::placeholder{color:rgba(255,255,255,.2)}
-.mp-dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#0D1B3E;border:1px solid rgba(212,43,58,.3);border-radius:10px;padding:16px;z-index:999;box-shadow:0 16px 48px rgba(0,0,0,.5);display:none}
+.mp-input.open,.mp-input:focus{border-color:rgba(212,43,58,.55)}
+.mp-input[data-placeholder]{color:rgba(255,255,255,.28)}
+.mp-dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#0D1B3E;border:1px solid rgba(212,43,58,.3);border-radius:10px;padding:14px;z-index:999;box-shadow:0 16px 48px rgba(0,0,0,.55);display:none;min-width:260px}
 .mp-dropdown.show{display:block}
-.mp-yr-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.mp-yr-nav button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:#fff;width:32px;height:32px;border-radius:6px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background .2s;line-height:1}
-.mp-yr-nav button:hover{background:rgba(212,43,58,.4)}
-.mp-yr-nav span{color:#fff;font-size:.95rem;font-weight:600;font-family:"Inter",sans-serif}
-.mp-months{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-.mp-m{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.75);padding:8px 4px;border-radius:6px;font-size:.78rem;cursor:pointer;text-align:center;transition:all .2s;font-family:"Inter",sans-serif}
+/* nav bar shared by both views */
+.mp-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:6px}
+.mp-nav-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:#fff;width:30px;height:30px;border-radius:6px;cursor:pointer;font-size:.95rem;display:flex;align-items:center;justify-content:center;transition:background .2s;line-height:1;flex-shrink:0}
+.mp-nav-btn:hover{background:rgba(212,43,58,.4)}
+.mp-nav-title{color:#fff;font-size:.88rem;font-weight:600;font-family:"Inter",sans-serif;cursor:pointer;padding:4px 8px;border-radius:5px;transition:background .2s;text-align:center;flex:1}
+.mp-nav-title:hover{background:rgba(255,255,255,.08)}
+/* Month grid */
+.mp-months{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.mp-m{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);color:rgba(255,255,255,.72);padding:8px 2px;border-radius:6px;font-size:.78rem;cursor:pointer;text-align:center;transition:all .2s;font-family:"Inter",sans-serif}
 .mp-m:hover{background:rgba(212,43,58,.25);border-color:var(--red);color:#fff}
-.mp-m.selected{background:var(--red);border-color:var(--red);color:#fff;font-weight:600}
+.mp-m.mp-active{background:var(--red);border-color:var(--red);color:#fff;font-weight:600}
+/* Day-of-week header */
+.mp-dayhdrs{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:4px}
+.mp-dh{color:rgba(255,255,255,.38);font-size:.65rem;text-align:center;font-weight:600;font-family:"Inter",sans-serif;padding:3px 0}
+/* Date grid */
+.mp-dates{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.mp-d{background:transparent;border:1px solid transparent;color:rgba(255,255,255,.7);padding:6px 2px;border-radius:5px;font-size:.78rem;cursor:pointer;text-align:center;transition:all .2s;font-family:"Inter",sans-serif;line-height:1}
+.mp-d:hover:not(.mp-empty):not(.mp-today-sel){background:rgba(212,43,58,.25);border-color:rgba(212,43,58,.4);color:#fff}
+.mp-d.mp-today{border-color:rgba(212,43,58,.5);color:var(--red);font-weight:600}
+.mp-d.mp-today-sel,.mp-d.mp-today-sel:hover{background:var(--red);border-color:var(--red);color:#fff;font-weight:600}
+.mp-d.mp-empty{cursor:default;pointer-events:none}
 
 /* TRAVELLER TOGGLE */
 .trv-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:6px;padding:12px 14px;transition:border-color .3s}
@@ -975,33 +988,79 @@ function modalBgClick(e){if(e.target===modal)closeModal();}
 function bookNow(){closeModal();document.getElementById("contact").scrollIntoView({behavior:"smooth"});}
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
 
-// MONTH PICKER
-const MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-const MONTHS_FULL=["January","February","March","April","May","June","July","August","September","October","November","December"];
-let mpYear=new Date().getFullYear(), mpSelected=-1;
+// DATE PICKER (Month + Date)
+const MONTHS_S=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const MONTHS_F=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const DAY_HDRS=["Su","Mo","Tu","We","Th","Fr","Sa"];
+let mpYear=new Date().getFullYear(), mpMonth=-1, mpDay=-1, mpView="month"; // view: "month" | "date"
+
+function daysInMonth(y,m){return new Date(y,m+1,0).getDate();}
+function firstDay(y,m){return new Date(y,m,1).getDay();}
 
 function renderMPicker(){
-  const yr=document.getElementById("mp-year");
-  const grid=document.getElementById("mp-months");
-  if(!yr||!grid)return;
-  yr.textContent=mpYear;
-  grid.innerHTML=MONTHS.map((m,i)=>`<button class="mp-m${mpSelected===i?" selected":""}" onclick="selectMonth(${i})">${m}</button>`).join("");
+  const drop=document.getElementById("mp-drop"); if(!drop)return;
+  if(mpView==="month") renderMonthView(drop);
+  else renderDateView(drop);
 }
+
+function renderMonthView(drop){
+  drop.innerHTML=`
+  <div class="mp-nav">
+    <button class="mp-nav-btn" onclick="mpChangeYear(-1)">&#8592;</button>
+    <span class="mp-nav-title">${mpYear}</span>
+    <button class="mp-nav-btn" onclick="mpChangeYear(1)">&#8594;</button>
+  </div>
+  <div class="mp-months">${MONTHS_S.map((m,i)=>`<button class="mp-m${mpMonth===i?' mp-active':''}" onclick="mpPickMonth(${i})">${m}</button>`).join("")}</div>`;
+}
+
+function renderDateView(drop){
+  const dim=daysInMonth(mpYear,mpMonth);
+  const fd=firstDay(mpYear,mpMonth);
+  const today=new Date();
+  const isCurMY=(today.getFullYear()===mpYear&&today.getMonth()===mpMonth);
+  let cells="";
+  for(let i=0;i<fd;i++) cells+=`<div class="mp-d mp-empty"></div>`;
+  for(let d=1;d<=dim;d++){
+    const isTod=isCurMY&&today.getDate()===d;
+    const isSel=mpDay===d;
+    cells+=`<button class="mp-d${isTod&&isSel?' mp-today-sel':isSel?' mp-today-sel':isTod?' mp-today':''}" onclick="mpPickDay(${d})">${d}</button>`;
+  }
+  drop.innerHTML=`
+  <div class="mp-nav">
+    <button class="mp-nav-btn" onclick="mpBackToMonth()">&#8592;</button>
+    <span class="mp-nav-title" onclick="mpBackToMonth()">${MONTHS_S[mpMonth]} ${mpYear}</span>
+    <button class="mp-nav-btn" onclick="mpDateNav(1)">&#8594;</button>
+  </div>
+  <div class="mp-dayhdrs">${DAY_HDRS.map(d=>`<div class="mp-dh">${d}</div>`).join("")}</div>
+  <div class="mp-dates">${cells}</div>`;
+}
+
 function toggleMPicker(){
   const drop=document.getElementById("mp-drop");
   const btn=document.getElementById("mp-btn");
   if(!drop)return;
   const isOpen=drop.classList.toggle("show");
   btn.classList.toggle("open",isOpen);
-  if(isOpen)renderMPicker();
+  if(isOpen){mpView="month";renderMPicker();}
 }
-function changeMPYear(d){mpYear+=d;renderMPicker();}
-function selectMonth(i){
-  mpSelected=i;
-  const val=MONTHS_FULL[i]+" "+mpYear;
+function mpChangeYear(d){mpYear+=d;renderMPicker();}
+function mpPickMonth(i){
+  mpMonth=i; mpDay=-1; mpView="date"; renderMPicker();
+}
+function mpBackToMonth(){mpView="month";renderMPicker();}
+function mpDateNav(d){
+  // next/prev month in date view
+  mpMonth+=d;
+  if(mpMonth>11){mpMonth=0;mpYear++;}
+  if(mpMonth<0){mpMonth=11;mpYear--;}
+  mpDay=-1; renderMPicker();
+}
+function mpPickDay(d){
+  mpDay=d;
+  const val=d+" "+MONTHS_F[mpMonth]+" "+mpYear;
   const btn=document.getElementById("mp-btn");
   const hid=document.getElementById("f-month");
-  if(btn){btn.textContent=val;}
+  if(btn){btn.textContent=val;btn.removeAttribute("data-placeholder");}
   if(hid){hid.value=val;}
   renderMPicker();
   setTimeout(()=>{
@@ -1009,7 +1068,7 @@ function selectMonth(i){
     const b=document.getElementById("mp-btn");
     if(drop)drop.classList.remove("show");
     if(b)b.classList.remove("open");
-  },180);
+  },200);
 }
 document.addEventListener("click",function(e){
   const wrap=document.querySelector(".mp-wrap");
